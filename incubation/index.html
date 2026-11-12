@@ -670,6 +670,30 @@ body.locked{overflow:hidden}
 .umenu button:hover{background:rgba(255,255,255,.06)}
 .nn{font-family:var(--mono);font-size:.66rem;color:#6f79a6;width:18px;flex:none}
 .navgroup a.active .nn{color:#ff9a3c}
+/* ===== suite launcher ===== */
+.suitebtn{width:38px;height:38px;border-radius:10px;border:1px solid var(--line);background:var(--surface);display:grid;place-items:center;color:var(--ink);cursor:pointer}
+.suitebtn svg{width:18px;height:18px}
+.suite{position:fixed;top:62px;right:70px;width:min(440px,calc(100vw - 24px));max-height:calc(100vh - 80px);overflow-y:auto;background:#0f1433;color:#eef1ff;border:1px solid rgba(255,255,255,.12);border-radius:18px;box-shadow:0 30px 90px -24px rgba(0,0,0,.7);z-index:116;display:none}
+.suite.open{display:block}
+.suite-h{padding:16px 18px 10px;display:flex;justify-content:space-between;align-items:center}
+.suite-h b{font-family:var(--display);font-size:1.02rem}
+.suite-h small{color:#8e98c2;font-size:.74rem}
+.apps{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:0 14px 14px}
+.app-t{display:flex;flex-direction:column;align-items:center;gap:8px;padding:14px 8px;border-radius:14px;text-decoration:none;color:#eef1ff;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.03);text-align:center;font-size:.8rem;line-height:1.25}
+.app-t:hover{background:rgba(255,255,255,.08);border-color:rgba(255,154,60,.5)}
+.app-t.cur{border-color:#ff9a3c;background:rgba(255,90,31,.12)}
+.app-t .ai{width:44px;height:44px;border-radius:13px;display:grid;place-items:center;color:#fff}
+.app-t .ai svg{width:20px;height:20px}
+.app-t small{color:#8e98c2;font-size:.68rem}
+.s-sec{font-family:var(--mono);font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:#6f79a6;padding:10px 18px 6px;border-top:1px solid rgba(255,255,255,.08)}
+.task{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;padding:10px 18px;text-decoration:none;color:#eef1ff;font-size:.86rem}
+.task:hover{background:rgba(255,255,255,.05)}
+.task .tb{font-family:var(--mono);font-size:.6rem;letter-spacing:.08em;padding:3px 7px;border-radius:6px;color:#fff;white-space:nowrap}
+.task small{display:block;color:#8e98c2;font-size:.74rem}
+.task .go{color:#ff9a3c;font-weight:600;font-size:.8rem}
+.suite-f{padding:12px 18px;border-top:1px solid rgba(255,255,255,.08);display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:.76rem;color:#8e98c2}
+.suite-f button{border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.05);color:#eef1ff;border-radius:8px;padding:5px 10px;font:inherit;font-size:.76rem}
+.sso{display:flex;gap:8px;align-items:center;background:#eaf7f2;color:#0b6b50;border-radius:10px;padding:10px 12px;font-size:.82rem;margin:-6px 0 16px}
 </style>
 </head>
 <body class="locked">
@@ -1519,15 +1543,15 @@ function gateOtp(){const e=USER.email||"name@organisation.pk";const [u,dom]=e.sp
  <div class="g-note"><svg><use href="#i-alert"/></svg><span>Demo: any six digits will work.</span></div>`;
  setTimeout(()=>document.getElementById("otp0").focus(),30);}
 function gateRole(){G().className="g-card g-wide";
- G().innerHTML=`<span class="g-step">Step 3 of 3 · Choose your workspace</span><h2>How would you like to enter, ${esc(firstName(USER.name))}?</h2><p>Each workspace shows only what that person needs. Switch any time from your profile menu.</p>
+ G().innerHTML=`<span class="g-step">Step 3 of 3 · Choose your workspace</span><h2>How would you like to enter, ${esc(firstName(USER.name))}?</h2><p>Each workspace shows only what that person needs. Switch any time from your profile menu.</p>${window._sso?`<div class="sso">✓ You're already signed in across the Ecosystem OS suite. Just pick a workspace.</div>`:""}
  <div class="rolegrid">${ROLECARDS.map(r=>`<button class="rcard" data-genter="${r.id}">${r.rec?'<span class="rec">FULL ACCESS</span>':""}<div class="ri" style="background:${r.c}"><svg><use href="#${r.i}"/></svg></div><b>${r.t}</b><span>${r.d}</span><div class="rs">${r.s.map(x=>`<i>${x}</i>`).join("")}</div></button>`).join("")}</div>`;}
 function gatePrep(id){G().className="g-card";const steps=["Verifying your access","Loading Cohort 3: 16 applicants, 6 startups","Loading 12 trainees and 6 studios","Applying your "+PROLES[id].label+" workspace"];
  G().innerHTML=`<span class="g-step">Signing you in</span><h2>Preparing your workspace</h2><div class="prep">${steps.map((s,i)=>`<div id="pr${i}"><i></i>${s}</div>`).join("")}</div>`;
  const fast=matchMedia("(prefers-reduced-motion: reduce)").matches;let i=0;const tick=()=>{if(i>0){const p=document.getElementById("pr"+(i-1));p.className="ok";p.querySelector("i").textContent="✓";}if(i<steps.length){document.getElementById("pr"+i).className="run";i++;setTimeout(tick,fast?60:420);}else setTimeout(()=>enterApp(id),fast?60:300);};tick();}
 function enterApp(id){USER.role=id;ROLE=id;if(id==="founder")window._st=COH[0].n;
- document.getElementById("gate").hidden=true;document.body.classList.remove("locked");try{sessionStorage.setItem("cega_user",JSON.stringify(USER));}catch(_){}
- const home=PROLES[id].home;if(location.hash==="#"+home)render();else location.hash=home;setTimeout(()=>toast(`Signed in as ${USER.name||"demo user"} · ${PROLES[id].label}`),400);}
-function lockApp(){document.getElementById("gate").hidden=false;document.body.classList.add("locked");try{sessionStorage.removeItem("cega_user");}catch(_){}gateLogin();}
+ document.getElementById("gate").hidden=true;document.body.classList.remove("locked");try{sessionStorage.setItem("cega_user",JSON.stringify(USER));localStorage.setItem("eos_suite_user",JSON.stringify({name:USER.name,email:USER.email}));}catch(_){}window._sso=false;
+ const hh=location.hash.slice(1);const okh=id==="judge"?(typeof JV!=="undefined"&&!!JV[hh]):((PROLES[id].screens||[]).includes(hh));if(hh&&okh)render();else{const home=PROLES[id].home;if(location.hash==="#"+home)render();else location.hash=home;}setTimeout(()=>toast(`Signed in as ${USER.name||"demo user"} · ${PROLES[id].label}`),400);}
+function lockApp(){document.getElementById("gate").hidden=false;document.body.classList.add("locked");try{sessionStorage.removeItem("cega_user");localStorage.removeItem("eos_suite_user");}catch(_){}window._sso=false;gateLogin();}
 function showRolePicker(){document.getElementById("gate").hidden=false;document.body.classList.add("locked");gateRole();}
 document.addEventListener("submit",e=>{
  if(e.target.id==="g-login"){e.preventDefault();e.stopImmediatePropagation();const n=$("#g-name").value.trim(),m=$("#g-email").value.trim(),p=$("#g-pass").value;if(!n||!m||!p){$("#g-err").textContent="Please fill in your name, email and password.";return;}if(!/^\S+@\S+\.\S+$/.test(m)){$("#g-err").textContent="That email doesn't look right.";return;}USER.name=n;USER.email=m;gateOtp();}
@@ -1549,7 +1573,7 @@ document.addEventListener("click",e=>{
  if(e.target.closest("[data-ulogout]")){um.classList.remove("open");USER.name="";USER.email="";lockApp();toast("Signed out");}
 },true);
 
-try{const su=JSON.parse(sessionStorage.getItem("cega_user")||"null");if(su&&su.name){Object.assign(USER,su);document.getElementById("gate").hidden=true;document.body.classList.remove("locked");ROLE=su.role;render();}else gateLogin();}catch(_){gateLogin();}
+try{const su=JSON.parse(sessionStorage.getItem("cega_user")||"null");if(su&&su.name){Object.assign(USER,su);document.getElementById("gate").hidden=true;document.body.classList.remove("locked");ROLE=su.role;render();}else{const sx=JSON.parse(localStorage.getItem("eos_suite_user")||"null");if(sx&&sx.name){USER.name=sx.name;USER.email=sx.email;window._sso=true;gateRole();}else gateLogin();}}catch(_){gateLogin();}
 
 window.POLISH={
  presence:["Sana Ahmed","Jazib K.","Hamza K."],
@@ -1652,6 +1676,46 @@ document.addEventListener("keydown",e=>{
   else if(e.key==="n"||e.key==="N"){if(bell)bell.click();}
   else if(e.key==="["||e.key==="]"){const links=[...document.querySelectorAll("#nav a")];const i=links.findIndex(a=>a.classList.contains("active"));const n=links[(i+(e.key==="]"?1:-1)+links.length)%links.length];if(n)location.hash=n.getAttribute("href").slice(1);}
 },true);
+})();
+
+
+window.SUITE_APP="inc";
+/* ===== suite: one sign-in, one switcher, one task list ===== */
+(function(){
+const APP=window.SUITE_APP;
+const onGh=/github\.io$/.test(location.hostname)||location.protocol==="file:";
+const ART={eco:"https://claude.ai/artifact/Sc4Reb154t9B65nQU1H577",inc:"https://claude.ai/artifact/Tmq7rjouEXh5Q2s2n4LyGR",rep:"https://claude.ai/artifact/Vtk3L4Bcaro4RroXV3Noxc"};
+const PATH={eco:"ecosystem-os",inc:"incubation",rep:"reporting"};
+const url=(a,h)=>(onGh?`../${PATH[a]}/`:ART[a])+(h?"#"+h:"");
+const APPS=[{id:"eco",n:"Ecosystem OS",s:"Ignite HQ",c:"linear-gradient(135deg,#ff9a3c,#ff5a1f)",i:"i-home"},{id:"inc",n:"Incubation Hub",s:"CEGA",c:"linear-gradient(135deg,#b44bff,#4b5bdc)",i:"i-route"},{id:"rep",n:"Reporting",s:"CEGA → Ignite",c:"linear-gradient(135deg,#0fa47a,#0e7490)",i:"i-chart"}];
+const TASKS=[
+ {a:"eco",h:"verify",t:"Verify 6 figures submitted by NICs",d:"2 don't match published data"},
+ {a:"eco",h:"exec",t:"Approve the Q1 Board pack",d:"18 pages, ready for sign-off"},
+ {a:"rep",h:"review",t:"Review 4 figures in the Q3 report",d:"Due to Ignite in 3 days"},
+ {a:"rep",h:"overview",t:"Finance section is 4 days late",d:"Nudge the Finance officer"},
+ {a:"inc",h:"selection",t:"Lock LCE weights for Cohort 3",d:"Jury scoring opens after this"},
+ {a:"inc",h:"programme",t:"Startups ready to move up a phase",d:"Review and upgrade"},
+];
+const tag=a=>{const x=APPS.find(p=>p.id===a);return `<span class="tb" style="background:${x.c}">${x.n.split(" ")[0].toUpperCase()}</span>`;};
+const top=document.querySelector(".top");const bell=top&&top.querySelector(".iconbtn");
+if(!top)return;
+const b=document.createElement("button");b.className="suitebtn";b.setAttribute("aria-label","Switch app and see your tasks");b.title="Apps and tasks";b.innerHTML=`<svg viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="5" r="2"/><circle cx="12" cy="5" r="2"/><circle cx="19" cy="5" r="2"/><circle cx="5" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/><circle cx="5" cy="19" r="2"/><circle cx="12" cy="19" r="2"/><circle cx="19" cy="19" r="2"/></svg>`;
+top.insertBefore(b,bell||null);
+const p=document.createElement("div");p.className="suite";p.setAttribute("role","dialog");p.setAttribute("aria-label","Ecosystem OS suite");document.body.appendChild(p);
+function draw(){const u=(typeof USER!=="undefined"&&USER.name)?USER.name:"Demo user";
+ p.innerHTML=`<div class="suite-h"><div><b>Ecosystem OS suite</b><br><small>One sign-in for every app</small></div></div>
+ <div class="apps">${APPS.map(x=>`<a class="app-t ${x.id===APP?"cur":""}" href="${x.id===APP?"#":url(x.id)}" ${x.id===APP?'aria-current="page" data-here':""}><span class="ai" style="background:${x.c}"><svg><use href="#${x.i}"/></svg></span><b>${x.n}</b><small>${x.id===APP?"You're here":x.s}</small></a>`).join("")}</div>
+ <div class="s-sec">Waiting for you across the suite · ${TASKS.length}</div>
+ ${TASKS.map(t=>`<a class="task" href="${t.a===APP?"#"+t.h:url(t.a,t.h)}" ${t.a===APP?`data-here-go="${t.h}"`:""}>${tag(t.a)}<span>${t.t}<small>${t.d}</small></span><span class="go">Open →</span></a>`).join("")}
+ <div class="suite-f"><span>Signed in as <b style="color:#fff">${u.replace(/</g,"&lt;")}</b> in all apps</span><button data-suite-out>Sign out everywhere</button></div>`;}
+b.addEventListener("click",e=>{e.stopPropagation();draw();p.classList.toggle("open");});
+document.addEventListener("click",e=>{
+ if(e.target.closest("[data-here]")){e.preventDefault();p.classList.remove("open");return;}
+ const hg=e.target.closest("[data-here-go]");if(hg){p.classList.remove("open");return;}
+ if(e.target.closest("[data-suite-out]")){p.classList.remove("open");try{localStorage.removeItem("eos_suite_user");}catch(_){}if(typeof USER!=="undefined"){USER.name="";USER.email="";}if(typeof lockApp==="function")lockApp();return;}
+ if(!e.target.closest(".suite")&&!b.contains(e.target))p.classList.remove("open");
+});
+document.addEventListener("keydown",e=>{if(e.key==="Escape")p.classList.remove("open");});
 })();
 
 </script>
