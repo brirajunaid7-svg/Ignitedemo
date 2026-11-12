@@ -394,6 +394,113 @@ tr.cut td{border-bottom:2px dashed var(--ember)}
 .flow .fs .n{font-family:var(--mono);font-size:.66rem;color:var(--ember)}
 .urlc{font-family:var(--mono);font-size:.72rem;color:var(--iris);word-break:break-all}
 .kanban.k5{grid-template-columns:repeat(5,minmax(190px,1fr))}
+/* ===== CEGA "studio night" theme: single visual world, dark by design ===== */
+:root{
+  --canvas:#070a1c; --surface:rgba(255,255,255,.045); --ink:#eef1ff; --muted:#9aa3c7; --line:rgba(255,255,255,.09);
+  --mint:#3ee6b0; --mint-bg:rgba(62,230,176,.13); --amber:#ffc35a; --amber-bg:rgba(255,195,90,.13);
+  --rose:#ff5d7a; --rose-bg:rgba(255,93,122,.14); --iris:#8b96ff; --iris-bg:rgba(139,150,255,.15);
+  --violet:#b44bff; --cyan:#36d6ff; --night:#1a2160;
+  --shadow:0 24px 60px -34px rgba(0,0,0,.9);
+  --grad:linear-gradient(110deg,#ff5a1f,#ff3d8b 45%,#b44bff 75%,#36d6ff);
+  color-scheme:dark;
+}
+body{background:radial-gradient(60% 50% at 100% 0%,rgba(255,90,31,.16),transparent 60%),radial-gradient(50% 50% at 0% 40%,rgba(180,75,255,.14),transparent 60%),radial-gradient(60% 50% at 60% 100%,rgba(54,214,255,.10),transparent 60%),#070a1c;background-attachment:fixed}
+#bg{position:fixed;inset:0;z-index:0;pointer-events:none}
+.app{position:relative;z-index:1}
+aside{background:linear-gradient(180deg,rgba(14,18,48,.92),rgba(7,10,28,.96));border-right:1px solid rgba(255,255,255,.06);backdrop-filter:blur(12px)}
+.navgroup a.active{background:linear-gradient(90deg,rgba(255,90,31,.22),rgba(180,75,255,.12));box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)}
+.navgroup a.active::before{background:var(--grad)}
+.top{background:rgba(7,10,28,.7);border-bottom:1px solid var(--line)}
+.search input,.qsel,.iconbtn,.form input,.form select{background:rgba(255,255,255,.05);border-color:var(--line);color:var(--ink)}
+.search kbd{background:rgba(255,255,255,.06);border-color:var(--line)}
+.results{background:#12163a}
+.results button:hover,.results button.hl{background:rgba(255,255,255,.06)}
+.avatar{background:var(--grad)}
+.card{background:linear-gradient(180deg,rgba(255,255,255,.065),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.08);backdrop-filter:blur(14px);box-shadow:var(--shadow)}
+.card.glow{position:relative}
+.card.glow::before{content:"";position:absolute;inset:-1px;border-radius:inherit;padding:1px;background:var(--grad);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:.7;pointer-events:none}
+.tile b{background:linear-gradient(180deg,#fff,#c9cff8);-webkit-background-clip:text;background-clip:text;color:transparent}
+.kicker{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.btn{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.12);color:var(--ink)}
+.btn:hover{border-color:rgba(255,255,255,.3);background:rgba(255,255,255,.1)}
+.btn.primary{background:linear-gradient(110deg,#5b4bff,#b44bff);border:0;color:#fff}
+.btn.ember{background:linear-gradient(110deg,#ff5a1f,#ff3d8b);border:0;color:#fff;box-shadow:0 10px 28px -10px rgba(255,61,139,.8)}
+.chip{background:rgba(255,255,255,.05);border-color:var(--line);color:var(--ink)}
+.chip.on{background:var(--grad);border-color:transparent;color:#fff}
+th{color:#8a93bb}
+tr.click:hover td{background:rgba(255,255,255,.04)}
+.bar{background:rgba(255,255,255,.08)}
+.bar i.ok{background:linear-gradient(90deg,#3ee6b0,#36d6ff);box-shadow:0 0 12px rgba(62,230,176,.5)}
+.bar i.warn{background:linear-gradient(90deg,#ffc35a,#ff5a1f)}
+.bar i.bad{background:linear-gradient(90deg,#ff5d7a,#ff3d8b)}
+.col{background:rgba(255,255,255,.03);border:1px solid var(--line)}
+.col h3 span{background:rgba(255,255,255,.08)}
+.gcard{background:rgba(255,255,255,.05);border-color:var(--line)}
+.tag{background:rgba(255,255,255,.05);border-color:var(--line);color:var(--ink)}
+.tag.l3{background:rgba(62,230,176,.14);border-color:rgba(62,230,176,.35);color:#7ff5cf}
+.tag.l2{background:rgba(139,150,255,.14);border-color:rgba(139,150,255,.35);color:#c3c9ff}
+.mono-badge,.profile .meta,.flow .fs,.mail .mh{background:rgba(255,255,255,.04);border-color:var(--line);color:var(--ink)}
+.mail{background:rgba(255,255,255,.03)}
+.pop{background:#12163a;border-color:rgba(255,255,255,.12)}
+.pop dd.fix{background:rgba(62,230,176,.12);color:#9ff5da}
+.ibtn{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.18);color:#c3c9ff}
+.ibtn:hover,.ibtn.on{background:var(--violet);border-color:var(--violet)}
+.alert{background:rgba(255,255,255,.025)}
+.st18{background:rgba(255,255,255,.04);border-color:var(--line)}
+.formula{background:rgba(0,0,0,.35);border:1px solid var(--line)}
+.ribbon{color:var(--muted)}
+.hero{background:linear-gradient(120deg,#1b0f45 0%,#141c56 45%,#3a0f37 100%);border:1px solid rgba(255,255,255,.1);box-shadow:0 30px 80px -40px rgba(180,75,255,.6)}
+.hero::after{background:radial-gradient(circle,rgba(255,90,31,.55),transparent 70%);animation:orb 9s ease-in-out infinite alternate}
+.hero::before{content:"";position:absolute;left:30%;bottom:-120px;width:320px;height:320px;border-radius:50%;background:radial-gradient(circle,rgba(54,214,255,.28),transparent 70%);animation:orb 12s ease-in-out infinite alternate-reverse}
+@keyframes orb{from{transform:translate(0,0)}to{transform:translate(-60px,40px)}}
+.frow .fb{background:var(--grad)}
+.hm td.v{color:var(--ink)!important}
+.tilt{transition:transform .25s ease, box-shadow .25s ease}
+.tilt:hover{transform:translateY(-4px) rotateX(2deg);box-shadow:0 30px 60px -30px rgba(180,75,255,.55)}
+.lead-num{font-family:var(--display);font-weight:800;font-size:2.4rem;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;line-height:1}
+
+/* level map */
+.map-wrap{overflow-x:auto;padding:4px}
+.lvlmap{min-width:920px;width:100%;display:block}
+.lvlmap .node{cursor:pointer}
+.lvlmap .node:hover .ring2,.lvlmap .node:focus .ring2{stroke-width:3;opacity:1}
+.lvlmap text{font-family:var(--body)}
+@keyframes dash{to{stroke-dashoffset:-40}}
+.flowline{animation:dash 2s linear infinite}
+@keyframes halo{0%{r:24;opacity:.7}100%{r:40;opacity:0}}
+.halo{animation:halo 2s ease-out infinite}
+
+/* character cards */
+.chars{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px}
+.char{border-radius:20px;overflow:hidden;padding:0}
+.char .banner{height:84px;position:relative;padding:12px 14px;display:flex;justify-content:space-between;align-items:flex-start}
+.char .banner small{font-family:var(--mono);font-size:.64rem;letter-spacing:.14em;color:rgba(255,255,255,.85)}
+.char .lvl{font-family:var(--display);font-weight:800;font-size:.95rem;background:rgba(0,0,0,.35);border-radius:10px;padding:3px 9px}
+.char .face{width:64px;height:64px;border-radius:50%;display:grid;place-items:center;font-family:var(--display);font-weight:800;font-size:1.3rem;color:#fff;border:3px solid #0d1030;position:absolute;left:16px;bottom:-30px;box-shadow:0 0 0 2px rgba(255,255,255,.2)}
+.char .cb{padding:38px 16px 16px;display:flex;flex-direction:column;gap:8px}
+.char .xp{height:6px;border-radius:99px;background:rgba(255,255,255,.08);overflow:hidden}
+.char .xp i{display:block;height:100%;background:var(--grad)}
+.radar{display:block;margin:0 auto}
+
+/* achievements */
+.badges{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px}
+.badge{border-radius:14px;padding:14px 10px;text-align:center;border:1px solid var(--line);background:rgba(255,255,255,.03)}
+.badge .bi{width:44px;height:44px;margin:0 auto 8px;border-radius:50%;display:grid;place-items:center}
+.badge .bi svg{width:20px;height:20px}
+.badge.on .bi{background:var(--grad);color:#fff;box-shadow:0 0 22px rgba(255,61,139,.55)}
+.badge.off{opacity:.45}
+.badge.off .bi{background:rgba(255,255,255,.06);color:var(--muted)}
+.badge b{display:block;font-size:.8rem}
+.badge small{font-size:.7rem;color:var(--muted)}
+
+/* podium */
+.podium{display:grid;grid-template-columns:1fr 1.1fr 1fr;gap:12px;align-items:end;margin:6px 0 4px}
+.pod{text-align:center}
+.pod .blk{border-radius:14px 14px 4px 4px;display:flex;align-items:flex-start;justify-content:center;padding-top:10px;font-family:var(--display);font-weight:800;font-size:1.6rem;color:#fff}
+.pod b{display:block;margin:8px 0 2px;font-family:var(--display)}
+.pod small{color:var(--muted)}
+@media (prefers-reduced-motion: reduce){.hero::after,.hero::before,.flowline,.halo{animation:none}.tilt:hover{transform:none}}
+
 </style>
 </head>
 <body>
@@ -675,26 +782,6 @@ const STEPS18=[
  ["Investor invites","Demo day invitations and RSVPs","investors","Raise"],["Investment raised","Verified per startup","investors","Raise"],["Jobs created","Verified per startup","investors","Raise"],["Refine the lifecycle","Feedback and cohort analytics","lifecycle","Refine"]];
 const V={};
 
-V.lifecycle=()=>{
-  const counts={Attract:412,Select:286,Onboard:COH.length,Grow:COH.length,Raise:COH.filter(c=>c.invited).length,Refine:1};
-  const groups=[...new Set(STEPS18.map(s=>s[3]))];
-  const totInv=COH.reduce((s,c)=>s+c.invest,0), totJobs=COH.reduce((s,c)=>s+c.jobs,0);
-  return `<div class="hero" style="grid-template-columns:auto 1fr auto">${ring(Math.round(COH.reduce((s,c)=>s+pitchScore(c),0)/COH.length),"PITCH READY")}
-   <div style="position:relative;z-index:1"><span class="kicker" style="color:#ff9a3c">CEGA incubation · Cohort 3 · 2026-27</span><h1>Incubation lifecycle${ib("Incubation lifecycle")}</h1><p>18 stages, one system: from the first campaign click to investment raised and jobs created.</p></div>
-   <div class="hstats"><div><b>412</b><small>Applications</small></div><div><b>${COH.length}</b><small>Startups selected</small></div><div><b>Rs ${totInv} m</b><small>Raised</small></div><div><b>${totJobs}</b><small>Jobs created</small></div></div></div>
-  <div class="grid two">
-   <div class="card panel"><div class="panel-h"><div><span class="eyebrow">Full call, Cohort 3</span><h2>Selection funnel</h2></div></div>
-    <div class="funnel">${[["Campaign clicks",33780],["Applications",412],["Eligible (Phase 1)",286],["LCE shortlist (Phase 2)",10],["Jury selected (Phase 3)",6],["Onboarded",6]].map(([l,v],i,a)=>`<div class="frow"><span>${l}</span><div class="fb" style="width:${Math.max(4,Math.sqrt(v/a[0][1])*100)}%;opacity:${1-i*.1}"></div><b>${fmt(v)}</b></div>`).join("")}</div>
-    <p style="font-size:.78rem;color:var(--muted);margin:10px 0 0">Selection and results show the top 16 of the 286 eligible applicants.</p></div>
-   <div class="card panel"><div class="panel-h"><div><span class="eyebrow">This week</span><h2>Needs attention</h2></div></div>
-    <div class="alerts">
-     <div class="alert bad"><div class="ic">${ic("i-alert")}</div><div><b>${COH.filter(c=>!c.onboard.bank).length} startups haven't shared bank details</b><span>Grant disbursement is blocked until they do.</span><br><button class="btn small" data-go="onboarding">Open onboarding</button></div></div>
-     <div class="alert warn"><div class="ic">${ic("i-users")}</div><div><b>Mentor Nida F. is fully booked</b><span>Fundraising sessions are in demand before demo day.</span><br><button class="btn small" data-go="programme">See mentors</button></div></div>
-     <div class="alert ok"><div class="ic">${ic("i-check")}</div><div><b>2 startups eligible to move to Acceleration</b><span>Attendance, pitch readiness and milestones met.</span><br><button class="btn small" data-go="programme">Review upgrades</button></div></div>
-    </div></div>
-  </div>
-  ${groups.map(g=>`<div class="phasehead"><span>${g}</span><i></i></div><div class="steps18">${STEPS18.map((s,i)=>[s,i]).filter(([s])=>s[3]===g).map(([s,i])=>`<button class="st18" data-go="${s[2]}"><span class="no">STEP ${String(i+1).padStart(2,"0")}</span><b>${s[0]}</b><span class="d">${s[1]}</span></button>`).join("")}</div>`).join("")}`;
-};
 
 V.campaigns=()=>{
   const total=CAMPAIGNS.reduce((s,c)=>s+c.apps,0);
@@ -759,6 +846,7 @@ V.selection=()=>{
      <div class="card panel"><div class="panel-h"><div><span class="eyebrow">Applied the same way to every startup</span><h2>Jury rules</h2></div></div>
       ${[["A1","3 jurors per startup, at least 1 specialist in its track (green)"],["A2","Declared conflicts of interest are excluded automatically (COI)"],["A3","No juror scores more than 6 startups; load is balanced"],["A4","Each juror's scores are normalised (z-score) so harsh and lenient jurors count equally"],["A5","Final = 40% LCE score + 60% normalised jury score; top 6 selected, next 2 waitlisted"]].map(r=>`<div class="rule"><span class="k">${r[0]}</span><span>${r[1]}</span></div>`).join("")}
       <div class="formula" style="margin-top:10px">jury_norm = 70 + 10 × ( raw − <em>juror_mean</em> ) ÷ <em>juror_sd</em><br>final = 0.4 × LCE + 0.6 × mean(jury_norm)</div></div>
+     <div class="card panel glow"><div class="panel-h"><div><span class="eyebrow">Top three after normalisation</span><h2>Jury podium</h2></div></div>${podium(SEL.final)}</div>
      <div class="card panel"><div class="panel-h"><div><span class="eyebrow">Raw vs normalised shows the bias removed</span><h2>Final ranking</h2></div><button class="btn small primary" data-go="results">Go to results →</button></div>
       <div class="tbl"><table><thead><tr><th>#</th><th>Startup</th><th>LCE</th><th>Jury raw</th><th>Jury norm.</th><th>Final</th><th></th></tr></thead><tbody>
       ${SEL.final.map((a,i)=>`<tr class="${i===SELECT-1||i===SELECT+WAIT-1?"cut":""}"><td>${i+1}</td><td><b>${a.n}</b></td><td>${a.score}</td><td>${a.rawAvg}</td><td>${a.jury}</td><td><b>${a.final}</b></td><td><span class="pill ${a.outcome==="Selected"?"ok":a.outcome==="Waitlist"?"warn":"bad"}">${a.outcome==="Not selected (jury)"?"Not selected":a.outcome}</span></td></tr>`).join("")}
@@ -798,34 +886,9 @@ V.onboarding=()=>{
    ${COH.map(c=>{const iss=new Date(c.issued),exp=new Date(iss);exp.setMonth(exp.getMonth()+c.months);const used=Math.round((today-iss)/(exp-iss)*100);return `<tr><td><b>${c.f}</b></td><td>${c.n}</td><td class="urlc">${slug(c.f).replace("-",".")}@cohort3.cega</td><td>1 Sep 2026</td><td>${c.months} months</td><td>${exp.toLocaleDateString("en-GB",{day:"numeric",month:"short",year:"numeric"})}</td><td><div class="prog"><div class="bar"><i class="${used>80?"bad":used>50?"warn":"ok"}" style="width:${used}%"></i></div><span>${used}%</span></div></td><td><button class="btn small" data-toast="Access for ${esc(c.f)} extended by 3 months (logged)">Extend</button></td></tr>`;}).join("")}
    </tbody></table></div></div>
   <div class="card panel" style="margin-top:16px"><div class="panel-h"><div><span class="eyebrow">Step 12 · generated from each startup's profile</span><h2>Design publishing${ib("Design publishing")}</h2></div><button class="btn small ember" data-toast="Published to LinkedIn, Instagram and cega.org.pk (demo)">Publish all</button></div>
-   <div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(210px,1fr))">${COH.map(c=>`<div class="social"><div style="display:flex;justify-content:space-between;align-items:start"><small>CEGA · COHORT 3</small><div class="lg" style="background:${hue(c.n)}">${c.n[0]}</div></div><div><p>Welcome to the cohort</p><h3>${c.n}</h3><p style="margin-top:6px">${c.tr} studio · ${c.city}<br>Founded by ${c.f}</p></div></div>`).join("")}</div></div>`;
+   <div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(210px,1fr))">${COH.map(c=>`<div class="social tilt"><div style="display:flex;justify-content:space-between;align-items:start"><small>CEGA · COHORT 3</small><div class="lg" style="background:${hue(c.n)}">${c.n[0]}</div></div><div><p>Welcome to the cohort</p><h3>${c.n}</h3><p style="margin-top:6px">${c.tr} studio · ${c.city}<br>Founded by ${c.f}</p></div></div>`).join("")}</div></div>`;
 };
 
-V.startups=()=>{
-  const pick=window._st||COH[0].n; const c=COH.find(x=>x.n===pick)||COH[0];
-  const ps=pitchScore(c);
-  const pl=[["deck","Pitch deck reviewed"],["model","Financial model"],["demo","Playable build or reel"],["traction","Traction metrics verified"],["rehearsal","Pitch rehearsal with mentors"],["dataroom","Data room ready"]];
-  return `<div class="head"><div><span class="kicker">Steps 07, 13 · Lifecycle</span><h1>Startup lifecycle${ib("Startup lifecycle")}</h1><p>Each startup's profile is the spine of its journey. Everything it does in the programme lands here.</p></div>
-   <div class="chips">${COH.map(x=>`<button class="chip ${x.n===c.n?"on":""}" data-st="${esc(x.n)}">${x.n}</button>`).join("")}</div></div>
-  <div class="card panel" style="display:flex;gap:16px;align-items:center;flex-wrap:wrap"><div class="logo" style="background:${hue(c.n)};width:56px;height:56px;border-radius:14px;font-size:1.4rem">${c.n[0]}</div>
-   <div style="flex:1;min-width:200px"><h2 style="font-size:1.4rem">${c.n}</h2><span style="color:var(--muted)">${c.tr} · ${c.city} · Founder: ${c.f} · Access: ${c.months} months</span></div>
-   <div class="actions"><button class="btn" data-toast="Profile shared with investors (demo)">Share profile</button><button class="btn primary" data-go="programme">Programme view</button></div>
-   <div style="flex-basis:100%"><div class="timeline">${PHASES.map((p,i)=>`<div class="${i<c.phase?"done":i===c.phase?"now":""}">${p}</div>`).join("")}</div></div></div>
-  <div class="grid tiles" style="margin-top:16px">
-   <div class="card tile"><small>Training attendance</small><b>${c.trainings}%</b>${progress(c.trainings,100)}</div>
-   <div class="card tile"><small>Mentor 1-to-1 sessions</small><b>${c.mentor}</b><span class="delta">${c.mentor>=6?"On track":"Book more"}</span></div>
-   <div class="card tile"><small>LCE modules completed</small><b>${c.lce}/5</b>${progress(c.lce,5)}</div>
-   <div class="card tile"><small>Investment raised</small><b>Rs ${c.invest} m</b><span class="delta">${c.invest?"verified":"none yet"}</span></div>
-   <div class="card tile"><small>Jobs created</small><b>${c.jobs}</b><span class="delta">EOBI-backed</span></div>
-  </div>
-  <div class="grid half" style="margin-top:16px">
-   <div class="card panel"><div class="panel-h"><div><span class="eyebrow">Step 13</span><h2>Pitch readiness${ib("Pitch readiness")}</h2></div><span class="pill ${tone(ps)}">${ps}/100</span></div>
-    ${pl.map(([k,l])=>`<div class="check"><i class="${c.pitch[k]?"y":"n"}">${c.pitch[k]?"✓":""}</i>${l}</div>`).join("")}
-    <p style="font-size:.8rem;color:var(--muted);margin:10px 0 0">Startups scoring 70+ are invited to pitch at demo day.</p></div>
-   <div class="card panel"><div class="panel-h"><div><span class="eyebrow">Latest activity</span><h2>Timeline</h2></div></div>
-    <div class="log">${[["10 Nov","Mentor session: fundraising with Nida F."],["3 Nov","Attended LCE module: Pitch and storytelling"],["28 Oct","Uploaded Q1 metrics with evidence"],["20 Oct","Attended LCE module: Fundraising and term sheets"],["1 Sep","Onboarded; credentials issued for "+c.months+" months"]].map(l=>`<div><time>${l[0]}</time><span>${l[1]}</span></div>`).join("")}</div></div>
-  </div>`;
-};
 
 V.programme=()=>{
   const elig=COH.filter(c=>c.trainings>=80&&pitchScore(c)>=70&&c.phase===1);
@@ -860,19 +923,9 @@ V.investors=()=>{
    <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(240px,1fr))">${[["Campaigns","Karachi Frames follow-up converted best (3.0%). Repeat event-led campaigns."],["Selection","Startups with traction ≥ 7 at LCE stage raised 4× more. Consider raising traction weight."],["Programme","Fundraising mentor is overbooked. Add a second finance mentor for Cohort 4."],["Placement","Unity and rigging skills are in short supply against studio demand."]].map(x=>`<div style="background:var(--canvas);border:1px solid var(--line);border-radius:12px;padding:14px"><span class="kicker">${x[0]}</span><div style="font-size:.88rem">${x[1]}</div></div>`).join("")}</div></div>`;
 };
 
-V.trainees=()=>{
-  const f=window._tr||"All";
-  const list=TRAINEES.filter(t=>f==="All"||t.tr===f);
-  return `<div class="head"><div><span class="kicker">Talent</span><h1>Trainees${ib("Trainees")}</h1><p>Every trainee across CEGA's six tracks: skills, projects and job status. Studios see job-ready profiles directly.</p></div>
-   <div class="chips">${["All",...TRACKS].map(x=>`<button class="chip ${x===f?"on":""}" data-tr="${x}">${x}</button>`).join("")}</div></div>
-  <div class="grid tiles" style="margin-bottom:16px"><div class="card tile"><small>Trainees</small><b>${TRAINEES.length}</b></div><div class="card tile"><small>Job-ready</small><b>${TRAINEES.filter(t=>t.st==="Job-ready").length}</b></div><div class="card tile"><small>Placed</small><b>${TRAINEES.filter(t=>t.st==="Placed").length}</b></div><div class="card tile"><small>Portfolio projects</small><b>${TRAINEES.reduce((s,t)=>s+t.proj,0)}</b></div></div>
-  <div class="grid cards">${list.map(t=>`<div class="card person"><div class="ph"><div class="avatar2" style="background:${hue(t.n)}">${initials(t.n)}</div><div style="flex:1"><h2>${t.n}</h2><span style="font-size:.8rem;color:var(--muted)">${t.tr} · ${t.city}</span></div><span class="pill ${t.st==="Placed"?"ok":t.st==="Job-ready"?"info":"warn"}">${t.st}</span></div>
-   <div>${Object.entries(t.sk).map(([k,v])=>`<span class="tag l${v}">${k} · ${["","Basic","Good","Strong"][v]}</span>`).join("")}</div>
-   <div style="display:flex;justify-content:space-between;align-items:center;font-size:.8rem;color:var(--muted)"><span>${t.proj} portfolio projects</span><button class="btn small" data-go="jobs">Best job matches</button></div></div>`).join("")}</div>`;
-};
 
 V.projects=()=>`<div class="head"><div><span class="kicker">Talent</span><h1>Projects${ib("Projects")}</h1><p>Portfolio work built by trainees, often with partner studios. This is what studios look at before hiring.</p></div><button class="btn primary" data-toast="Project submission form opens here (demo)">+ Submit project</button></div>
-  <div class="grid cards">${PROJECTS.map(p=>`<div class="card profile"><div style="height:110px;border-radius:12px;background:linear-gradient(135deg,${hue(p.t)},#0b1230);display:flex;align-items:flex-end;padding:12px;color:#fff;font-family:var(--display);font-weight:700">${p.tr}</div>
+  <div class="grid cards">${PROJECTS.map(p=>`<div class="card profile tilt"><div style="height:110px;border-radius:12px;background:linear-gradient(135deg,${hue(p.t)},#0b1230);display:flex;align-items:flex-end;padding:12px;color:#fff;font-family:var(--display);font-weight:700">${p.tr}</div>
    <div class="top-row"><h2>${p.t}</h2><span class="pill ${p.st==="Shipped"?"ok":p.st==="In progress"?"warn":"info"}">${p.st}</span></div>
    <span style="font-size:.82rem;color:var(--muted)">By ${p.who.join(", ")}</span><span style="font-size:.82rem">Tools: ${p.tools}</span><span style="font-size:.82rem">Partner studio: <b>${p.studio}</b></span></div>`).join("")}</div>`;
 
@@ -895,7 +948,7 @@ V.skills=()=>{
 
 V.studios=()=>`<div class="head"><div><span class="kicker">Industry</span><h1>Studios${ib("Studios")}</h1><p>Gaming and animation studios in CEGA's network, with open roles and how many CEGA trainees they've hired.</p></div><button class="btn primary" data-toast="Studio onboarding form opens here (demo)">+ Add studio</button></div>
   <div class="grid tiles" style="margin-bottom:16px"><div class="card tile"><small>Gaming studios</small><b>${STUDIOS.filter(s=>s.type==="Gaming").length}</b></div><div class="card tile"><small>Animation studios</small><b>${STUDIOS.filter(s=>s.type==="Animation").length}</b></div><div class="card tile"><small>Open roles</small><b>${STUDIOS.reduce((s,x)=>s+x.roles,0)}</b></div><div class="card tile"><small>CEGA hires</small><b>${STUDIOS.reduce((s,x)=>s+x.hires,0)}</b></div></div>
-  <div class="grid cards">${STUDIOS.map(s=>`<div class="card profile"><div class="top-row"><div style="display:flex;gap:12px;align-items:center"><div class="logo" style="background:${hue(s.n)}">${s.n[0]}</div><div><h2>${s.n}</h2><span style="color:var(--muted);font-size:.8rem">${s.type} studio · ${s.city} · ${s.size} people</span></div></div></div>
+  <div class="grid cards">${STUDIOS.map(s=>`<div class="card profile tilt"><div class="top-row"><div style="display:flex;gap:12px;align-items:center"><div class="logo" style="background:${hue(s.n)}">${s.n[0]}</div><div><h2>${s.n}</h2><span style="color:var(--muted);font-size:.8rem">${s.type} studio · ${s.city} · ${s.size} people</span></div></div></div>
    <div class="meta"><div><b>${s.roles}</b>Open roles</div><div><b>${s.hires}</b>CEGA hires</div><div style="grid-column:1/-1"><b style="font-size:.9rem">${s.rel}</b>Relationship</div></div>
    <button class="btn small" data-go="jobs">See roles</button></div>`).join("")}</div>`;
 
@@ -929,6 +982,128 @@ V.placements=()=>{
   </tbody></table></div></div>`;
 };
 
+/* ===== level map ===== */
+const STARTUP_POS=[15,15,13,14,13,11];
+const CUR=13;
+const GROUPCOL={Attract:"#36d6ff",Select:"#b44bff",Onboard:"#8b96ff",Grow:"#3ee6b0",Raise:"#ffc35a",Refine:"#ff5d7a"};
+function levelMap(){
+  const W=1100,rows=3,per=6,padX=90,rowH=150,top=70;
+  const pts=STEPS18.map((s,i)=>{const r=Math.floor(i/per),c=i%per;const col=r%2===0?c:per-1-c;return {x:padX+col*((W-2*padX)/(per-1)),y:top+r*rowH,s,i};});
+  let d=`M${pts[0].x},${pts[0].y}`;
+  for(let i=1;i<pts.length;i++){const a=pts[i-1],b=pts[i];if(a.y===b.y)d+=` L${b.x},${b.y}`;else{const dir=a.x>W/2?1:-1;d+=` C${a.x+dir*90},${a.y} ${b.x+dir*90},${b.y} ${b.x},${b.y}`;}}
+  let dd=`M${pts[0].x},${pts[0].y}`;
+  for(let i=1;i<CUR;i++){const a=pts[i-1],b=pts[i];if(a.y===b.y)dd+=` L${b.x},${b.y}`;else{const dir=a.x>W/2?1:-1;dd+=` C${a.x+dir*90},${a.y} ${b.x+dir*90},${b.y} ${b.x},${b.y}`;}}
+  const H=top+rows*rowH-30;
+  const nodes=pts.map(p=>{const n=p.i+1,done=n<CUR,cur=n===CUR,c=GROUPCOL[p.s[3]];
+    return `<g class="node" data-go="${p.s[2]}" tabindex="0" role="button" aria-label="Step ${n}: ${p.s[0]}">
+      ${cur?`<circle class="halo" cx="${p.x}" cy="${p.y}" r="24" fill="none" stroke="#ff5a1f" stroke-width="2"/>`:""}
+      <circle cx="${p.x}" cy="${p.y}" r="24" fill="${done?c:"#0d1130"}" fill-opacity="${done?.22:1}" stroke="${done||cur?c:"rgba(255,255,255,.18)"}" stroke-width="${cur?3:1.6}" class="ring2" ${done||cur?`filter="url(#glow)"`:""}/>
+      <text x="${p.x}" y="${p.y+5}" text-anchor="middle" style="font-family:var(--display);font-weight:800;font-size:14px;fill:${done||cur?"#fff":"#6f79a6"}">${done?"✓":String(n).padStart(2,"0")}</text>
+      <text x="${p.x}" y="${p.y+44}" text-anchor="middle" style="font-size:11.5px;font-weight:600;fill:${done||cur?"#eef1ff":"#8a93bb"}">${p.s[0].length>22?p.s[0].slice(0,21)+"…":p.s[0]}</text>
+      <text x="${p.x}" y="${p.y+59}" text-anchor="middle" style="font-family:var(--mono);font-size:9px;letter-spacing:.12em;fill:${c};opacity:.85">${p.s[3].toUpperCase()}</text></g>`;}).join("");
+  const avatars=COH.map((c,k)=>{const p=pts[STARTUP_POS[k]-1];const same=COH.slice(0,k).filter((_,j)=>STARTUP_POS[j]===STARTUP_POS[k]).length;const ax=p.x-30+same*20,ay=p.y-42;
+    return `<g data-st-go="${esc(c.n)}" style="cursor:pointer" role="button" tabindex="0" aria-label="${c.n} is at step ${STARTUP_POS[k]}"><circle cx="${ax}" cy="${ay}" r="11" fill="${hue(c.n)}" stroke="#070a1c" stroke-width="2"/><text x="${ax}" y="${ay+4}" text-anchor="middle" style="font-family:var(--display);font-weight:800;font-size:10px;fill:#fff">${c.n[0]}</text><title>${c.n}</title></g>`;}).join("");
+  return `<svg class="lvlmap" viewBox="0 0 ${W} ${H}" role="img" aria-label="Incubation lifecycle as a level map with 18 steps">
+    <defs><linearGradient id="pg" x1="0" x2="1"><stop offset="0" stop-color="#ff5a1f"/><stop offset=".45" stop-color="#ff3d8b"/><stop offset=".75" stop-color="#b44bff"/><stop offset="1" stop-color="#36d6ff"/></linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+    <path d="${d}" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="10" stroke-linecap="round"/>
+    <path d="${d}" fill="none" stroke="rgba(255,255,255,.18)" stroke-width="2" stroke-dasharray="4 8" class="flowline"/>
+    <path d="${dd}" fill="none" stroke="url(#pg)" stroke-width="6" stroke-linecap="round" filter="url(#glow)"/>
+    ${nodes}${avatars}</svg>`;
+}
+
+/* starfield */
+(function(){const cv=document.createElement("canvas");cv.id="bg";document.body.prepend(cv);const ctx=cv.getContext("2d");let W,H,stars=[];
+  const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function size(){W=cv.width=innerWidth*devicePixelRatio;H=cv.height=innerHeight*devicePixelRatio;cv.style.width=innerWidth+"px";cv.style.height=innerHeight+"px";stars=Array.from({length:Math.round(innerWidth*innerHeight/9000)},()=>({x:Math.random()*W,y:Math.random()*H,r:(Math.random()*1.2+.3)*devicePixelRatio,v:(Math.random()*.15+.03)*devicePixelRatio,a:Math.random()*.6+.2,t:Math.random()*6}));}
+  function draw(){ctx.clearRect(0,0,W,H);for(const s of stars){s.t+=.02;s.y-=s.v;if(s.y<0){s.y=H;s.x=Math.random()*W;}ctx.globalAlpha=s.a*(.6+.4*Math.sin(s.t));ctx.fillStyle="#cfd6ff";ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,6.283);ctx.fill();}if(!reduce)requestAnimationFrame(draw);}
+  addEventListener("resize",size);size();draw();})();
+
+/* radar */
+const AXES=[["Art",["Storyboarding","Concept art"]],["Animation",["2D animation","3D animation"]],["3D",["3D modelling","Rigging"]],["Engines",["Unity C#","Unreal Blueprints"]],["Game design",["Level design","Game UI/UX"]],["Post & sound",["Compositing","Sound design"]]];
+function radar(t,size=150){const c=size/2,R=size/2-24;const v=AXES.map(([,ks])=>Math.max(0,...ks.map(k=>t.sk[k]||0))/3);
+  const pt=(i,r)=>{const a=-Math.PI/2+i*2*Math.PI/AXES.length;return [c+Math.cos(a)*r,c+Math.sin(a)*r];};
+  const grid=[1/3,2/3,1].map(f=>`<polygon points="${AXES.map((_,i)=>pt(i,R*f).join(",")).join(" ")}" fill="none" stroke="rgba(255,255,255,.1)"/>`).join("");
+  const spokes=AXES.map((_,i)=>`<line x1="${c}" y1="${c}" x2="${pt(i,R)[0]}" y2="${pt(i,R)[1]}" stroke="rgba(255,255,255,.08)"/>`).join("");
+  const shape=v.map((x,i)=>pt(i,R*Math.max(x,.06)).join(",")).join(" ");
+  const labels=AXES.map(([l],i)=>{const [x,y]=pt(i,R+14);return `<text x="${x}" y="${y+3}" text-anchor="middle" style="font-size:8.5px;fill:#9aa3c7">${l}</text>`;}).join("");
+  const id="rd"+Math.floor(hash(t.n)*1e6);
+  return `<svg class="radar" width="${size}" height="${size}" viewBox="0 0 ${size} ${size}" role="img" aria-label="${t.n} skills radar"><defs><linearGradient id="${id}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff3d8b"/><stop offset="1" stop-color="#36d6ff"/></linearGradient></defs>${grid}${spokes}<polygon points="${shape}" fill="url(#${id})" fill-opacity=".35" stroke="url(#${id})" stroke-width="2"/>${v.map((x,i)=>{const [px,py]=pt(i,R*Math.max(x,.06));return x?`<circle cx="${px}" cy="${py}" r="2.5" fill="#fff"/>`:"";}).join("")}${labels}</svg>`;
+}
+
+V.lifecycle=()=>{
+  const totInv=COH.reduce((s,c)=>s+c.invest,0), totJobs=COH.reduce((s,c)=>s+c.jobs,0);
+  const pr=Math.round(COH.reduce((s,c)=>s+pitchScore(c),0)/COH.length);
+  return `<div class="hero" style="grid-template-columns:auto 1fr auto">${ring(pr,"PITCH READY")}
+   <div style="position:relative;z-index:1"><span class="kicker" style="-webkit-text-fill-color:#ff9a3c">CEGA incubation · Cohort 3 · 2026-27</span><h1 style="font-size:2.2rem">Incubation lifecycle${ib("Incubation lifecycle")}</h1><p>18 stages, one system. The cohort is on <b style="color:#fff">step ${CUR}: ${STEPS18[CUR-1][0]}</b>. Demo day is 15 January.</p></div>
+   <div class="hstats"><div><b>412</b><small>Applications</small></div><div><b>${COH.length}</b><small>Startups in cohort</small></div><div><b>Rs ${totInv} m</b><small>Raised</small></div><div><b>${totJobs}</b><small>Jobs created</small></div></div></div>
+  <div class="card panel glow"><div class="panel-h"><div><span class="eyebrow">Click any stage to open it · avatars show where each startup is</span><h2 style="font-size:1.25rem">The cohort's journey</h2></div>
+   <div class="legend" style="margin:0">${Object.entries(GROUPCOL).map(([k,c])=>`<span><i style="background:${c}"></i>${k}</span>`).join("")}</div></div>
+   <div class="map-wrap">${levelMap()}</div>
+   <div class="chips" style="margin-top:6px">${COH.map((c,k)=>`<button class="chip" data-st-go="${esc(c.n)}"><span class="lane-dot" style="display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px;background:${hue(c.n)}"></span>${c.n} · step ${STARTUP_POS[k]}</button>`).join("")}</div></div>
+  <div class="grid two" style="margin-top:16px">
+   <div class="card panel"><div class="panel-h"><div><span class="eyebrow">Full call, Cohort 3</span><h2>Selection funnel</h2></div></div>
+    <div class="funnel">${[["Campaign clicks",33780],["Applications",412],["Eligible (Phase 1)",286],["LCE shortlist (Phase 2)",10],["Jury selected (Phase 3)",6],["Onboarded",6]].map(([l,v],i,a)=>`<div class="frow"><span>${l}</span><div class="fb" style="width:${Math.max(4,Math.sqrt(v/a[0][1])*100)}%;opacity:${1-i*.08}"></div><b>${fmt(v)}</b></div>`).join("")}</div>
+    <p style="font-size:.78rem;color:var(--muted);margin:10px 0 0">Selection and results show the top 16 of the 286 eligible applicants.</p></div>
+   <div class="card panel"><div class="panel-h"><div><span class="eyebrow">This week</span><h2>Needs attention</h2></div></div>
+    <div class="alerts">
+     <div class="alert bad"><div class="ic">${ic("i-alert")}</div><div><b>${COH.filter(c=>!c.onboard.bank).length} startups haven't shared bank details</b><span>Grant disbursement is blocked until they do.</span><br><button class="btn small" data-go="onboarding">Open onboarding</button></div></div>
+     <div class="alert warn"><div class="ic">${ic("i-users")}</div><div><b>Mentor Nida F. is fully booked</b><span>Fundraising sessions are in demand before demo day.</span><br><button class="btn small" data-go="programme">See mentors</button></div></div>
+     <div class="alert ok"><div class="ic">${ic("i-check")}</div><div><b>Startups ready to move up a phase</b><span>Attendance, pitch readiness and milestones met.</span><br><button class="btn small" data-go="programme">Review upgrades</button></div></div>
+    </div></div>
+  </div>`;
+};
+
+V.trainees=()=>{
+  const f=window._tr||"All";
+  const list=TRAINEES.filter(t=>f==="All"||t.tr===f);
+  const lvl=t=>Object.values(t.sk).reduce((s,x)=>s+x,0);
+  return `<div class="head"><div><span class="kicker">Talent</span><h1>Trainees${ib("Trainees")}</h1><p>Every trainee across CEGA's six tracks, with a skills radar, level and portfolio. Studios browse job-ready profiles directly.</p></div>
+   <div class="chips">${["All",...TRACKS].map(x=>`<button class="chip ${x===f?"on":""}" data-tr="${x}">${x}</button>`).join("")}</div></div>
+  <div class="grid tiles" style="margin-bottom:16px"><div class="card tile"><small>Trainees</small><b>${TRAINEES.length}</b></div><div class="card tile"><small>Job-ready</small><b>${TRAINEES.filter(t=>t.st==="Job-ready").length}</b></div><div class="card tile"><small>Placed</small><b>${TRAINEES.filter(t=>t.st==="Placed").length}</b></div><div class="card tile"><small>Portfolio projects</small><b>${TRAINEES.reduce((s,t)=>s+t.proj,0)}</b></div></div>
+  <div class="chars">${list.map(t=>{const h=hue(t.n);const L=lvl(t);return `<div class="card char tilt">
+   <div class="banner" style="background:linear-gradient(120deg,${h},#1b0f45)"><small>${t.tr.toUpperCase()}</small><span class="lvl">LVL ${L}</span><div class="face" style="background:${h}">${initials(t.n)}</div></div>
+   <div class="cb"><div style="display:flex;justify-content:space-between;align-items:center;gap:8px"><h2>${t.n}</h2><span class="pill ${t.st==="Placed"?"ok":t.st==="Job-ready"?"info":"warn"}">${t.st}</span></div>
+    <span style="font-size:.78rem;color:var(--muted)">${t.city} · ${t.proj} portfolio projects</span>
+    ${radar(t)}
+    <div style="display:flex;justify-content:space-between;font-size:.72rem;color:var(--muted)"><span>XP to next level</span><span>${(L*37)%100}/100</span></div><div class="xp"><i style="width:${(L*37)%100}%"></i></div>
+    <div>${Object.entries(t.sk).map(([k,v])=>`<span class="tag l${v}">${k}</span>`).join("")}</div>
+    <button class="btn small" data-go="jobs">Best job matches →</button></div></div>`;}).join("")}</div>`;
+};
+
+V.startups=()=>{
+  const pick=window._st||COH[0].n; const c=COH.find(x=>x.n===pick)||COH[0]; const k=COH.indexOf(c);
+  const ps=pitchScore(c);
+  const pl=[["deck","Pitch deck reviewed"],["model","Financial model"],["demo","Playable build or reel"],["traction","Traction metrics verified"],["rehearsal","Pitch rehearsal with mentors"],["dataroom","Data room ready"]];
+  const ach=[["i-check","Onboarded","All paperwork done",Object.values(c.onboard).every(Boolean)],["i-users","Mentor regular","5+ mentor sessions",c.mentor>=5],["i-doc","LCE graduate","5/5 LCE modules",c.lce>=5],["i-flow","Pitch ready","Score 70+",ps>=70],["i-handshake","Funded","First investment",c.invest>0],["i-users","Job creator","5+ jobs",c.jobs>=5],["i-route","Accelerated","Reached Acceleration",c.phase>=2],["i-chart","Demo day","Pitched on stage",false]];
+  return `<div class="head"><div><span class="kicker">Steps 07, 13 · Lifecycle</span><h1>Startup lifecycle${ib("Startup lifecycle")}</h1><p>Each startup's profile is the spine of its journey. Everything it does in the programme lands here.</p></div>
+   <div class="chips">${COH.map(x=>`<button class="chip ${x.n===c.n?"on":""}" data-st="${esc(x.n)}">${x.n}</button>`).join("")}</div></div>
+  <div class="hero" style="grid-template-columns:auto 1fr auto">
+   <div style="position:relative;z-index:1;width:84px;height:84px;border-radius:22px;background:${hue(c.n)};display:grid;place-items:center;font-family:var(--display);font-weight:800;font-size:2.2rem;box-shadow:0 0 40px ${hue(c.n)}">${c.n[0]}</div>
+   <div style="position:relative;z-index:1"><span class="kicker" style="-webkit-text-fill-color:#ff9a3c">${c.tr} studio · ${c.city} · step ${STARTUP_POS[k]} of 18</span><h1>${c.n}</h1><p>Founded by ${c.f} · portal access ${c.months} months</p>
+    <div class="timeline" style="margin-top:12px;max-width:520px">${PHASES.map((p,i)=>`<div class="${i<c.phase?"done":i===c.phase?"now":""}" style="color:${i<=c.phase?"#fff":"#9aa3c7"}">${p}</div>`).join("")}</div></div>
+   ${ring(ps,"PITCH READY")}</div>
+  <div class="grid tiles">
+   <div class="card tile"><small>Training attendance</small><b>${c.trainings}%</b>${progress(c.trainings,100)}</div>
+   <div class="card tile"><small>Mentor 1-to-1 sessions</small><b>${c.mentor}</b><span class="delta">${c.mentor>=6?"On track":"Book more"}</span></div>
+   <div class="card tile"><small>LCE modules</small><b>${c.lce}/5</b>${progress(c.lce,5)}</div>
+   <div class="card tile"><small>Investment raised</small><b>Rs ${c.invest} m</b><span class="delta">${c.invest?"verified":"none yet"}</span></div>
+   <div class="card tile"><small>Jobs created</small><b>${c.jobs}</b><span class="delta">EOBI-backed</span></div>
+  </div>
+  <div class="card panel glow" style="margin-top:16px"><div class="panel-h"><div><span class="eyebrow">${ach.filter(a=>a[3]).length} of ${ach.length} unlocked</span><h2>Achievements</h2></div></div>
+   <div class="badges">${ach.map(a=>`<div class="badge ${a[3]?"on":"off"}"><div class="bi">${ic(a[0])}</div><b>${a[1]}</b><small>${a[2]}</small></div>`).join("")}</div></div>
+  <div class="grid half" style="margin-top:16px">
+   <div class="card panel"><div class="panel-h"><div><span class="eyebrow">Step 13</span><h2>Pitch readiness${ib("Pitch readiness")}</h2></div><span class="pill ${tone(ps)}">${ps}/100</span></div>
+    ${pl.map(([kk,l])=>`<div class="check"><i class="${c.pitch[kk]?"y":"n"}">${c.pitch[kk]?"✓":""}</i>${l}</div>`).join("")}
+    <p style="font-size:.8rem;color:var(--muted);margin:10px 0 0">Startups scoring 70+ are invited to pitch at demo day.</p></div>
+   <div class="card panel"><div class="panel-h"><div><span class="eyebrow">Latest activity</span><h2>Timeline</h2></div></div>
+    <div class="log">${[["10 Nov","Mentor session: fundraising with Nida F."],["3 Nov","Attended LCE module: Pitch and storytelling"],["28 Oct","Uploaded Q1 metrics with evidence"],["20 Oct","Attended LCE module: Fundraising and term sheets"],["1 Sep","Onboarded; credentials issued for "+c.months+" months"]].map(l=>`<div><time>${l[0]}</time><span>${l[1]}</span></div>`).join("")}</div></div>
+  </div>`;
+};
+
+function podium(list){const t=list.slice(0,3);const order=[t[1],t[0],t[2]];const hts=[110,150,90];const lbl=["2","1","3"];
+  return `<div class="podium">${order.map((a,i)=>`<div class="pod"><div style="width:46px;height:46px;border-radius:14px;margin:0 auto;background:${hue(a.n)};display:grid;place-items:center;font-family:var(--display);font-weight:800;color:#fff">${a.n[0]}</div><b>${a.n}</b><small>Final ${a.final}</small><div class="blk" style="height:${hts[i]}px;margin-top:8px;background:${i===1?"var(--grad)":"linear-gradient(180deg,rgba(255,255,255,.14),rgba(255,255,255,.03))"}">${lbl[i]}</div></div>`).join("")}</div>`;}
+
 /* ================= shell ================= */
 function renderNav(active){
   const groups=[...new Set(Object.values(SCREENS).map(s=>s.g))];
@@ -941,7 +1116,8 @@ document.addEventListener("click",e=>{
   if(ibb){const d=INFO[ibb.dataset.info];pop.innerHTML=`<button class="x" aria-label="Close">×</button><h3>${ibb.dataset.info}</h3><dl><div><dt>What it shows</dt><dd>${d[0]}</dd></div><div><dt>Where the data comes from</dt><dd>${d[1]}</dd></div><div><dt>Who sees it</dt><dd>${d[2]}</dd></div><div><dt>Why it matters</dt><dd class="fix">${d[3]}</dd></div></dl>`;pop.classList.add("open");const r=ibb.getBoundingClientRect();const w=pop.offsetWidth;pop.style.left=Math.max(12,Math.min(r.left+scrollX-12,scrollX+document.documentElement.clientWidth-w-12))+"px";pop.style.top=(r.bottom+scrollY+8)+"px";return;}
   if(!e.target.closest("#pop")||e.target.closest(".x"))pop.classList.remove("open");
   if(!e.target.closest(".search"))$("#results").classList.remove("open");
-  const t=e.target.closest("[data-go],[data-toast],[data-src],[data-ph],[data-reset],[data-res],[data-st],[data-upgrade],[data-tr],[data-job],[data-apply],[data-move],[data-jump]"); if(!t)return; const d=t.dataset;
+  const t=e.target.closest("[data-st-go],[data-go],[data-toast],[data-src],[data-ph],[data-reset],[data-res],[data-st],[data-upgrade],[data-tr],[data-job],[data-apply],[data-move],[data-jump]"); if(!t)return; const d=t.dataset;
+  if(d.stGo){window._st=d.stGo;location.hash="startups";return;}
   if(d.jump){location.hash=d.jump;$("#q").value="";$("#results").classList.remove("open");return;}
   if(d.go){if(location.hash==="#"+d.go)render();else location.hash=d.go;}
   else if(d.src){window._src=d.src;render();}
@@ -958,6 +1134,7 @@ document.addEventListener("click",e=>{
 });
 document.addEventListener("input",e=>{const w=e.target.dataset&&e.target.dataset.w;if(w){W[w]=+e.target.value;const y=scrollY;const id=e.target.id;render();const el=document.getElementById(id);if(el)el.focus();scrollTo(0,y);}});
 document.addEventListener("submit",e=>{if(e.target.id!=="campform")return;e.preventDefault();const c={name:$("#cf-name").value.trim(),type:$("#cf-type").value,date:$("#cf-date").value||"2026-11-20",theme:$("#cf-theme").value.trim()||"—",url:$("#cf-url").value.trim()||"https://cega.org.pk/apply",clicks:0,apps:0};if(!c.name){toast("Add a campaign name first");return;}CAMPAIGNS.unshift(c);render();toast(`Campaign saved. Tracked link created for "${c.name}"`);});
+document.addEventListener("keydown",e=>{if((e.key==="Enter"||e.key===" ")&&e.target.matches&&e.target.matches("g[role=button]")){e.preventDefault();e.target.dispatchEvent(new MouseEvent("click",{bubbles:true}));}});
 document.addEventListener("keydown",e=>{if(e.key==="/"&&document.activeElement.tagName!=="INPUT"){e.preventDefault();$("#q").focus();}if(e.key==="Escape"){$("#pop").classList.remove("open");$("#results").classList.remove("open");}});
 $("#q").addEventListener("input",e=>{const q=e.target.value.trim().toLowerCase();const box=$("#results");if(!q){box.classList.remove("open");return;}
   const idx=[...Object.entries(SCREENS).map(([k,s])=>({t:s.l,k:"Screen",go:k})),...APPS.map(a=>({t:a.n,k:"Applicant",go:"applications"})),...TRAINEES.map(t=>({t:t.n,k:"Trainee · "+t.tr,go:"trainees"})),...STUDIOS.map(s=>({t:s.n,k:"Studio",go:"studios"})),...CAMPAIGNS.map(c=>({t:c.name,k:"Campaign",go:"campaigns"}))];
