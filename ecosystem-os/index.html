@@ -389,9 +389,109 @@ svg text{font-family:var(--body)}
 #confetti{position:fixed;inset:0;pointer-events:none;z-index:200}
 @media (max-width:860px){.presence{display:none}}
 @media (prefers-reduced-motion: reduce){#view.enter,.pal{animation:none}.feed-h .live::before{animation:none}}
+/* ===== secure entry gate ===== */
+body.locked{overflow:hidden}
+.gate{position:fixed;inset:0;z-index:150;display:grid;grid-template-columns:1.05fr 1fr;background:#f3f5fa}
+.gate[hidden]{display:none}
+.g-brand{position:relative;overflow:hidden;background:radial-gradient(80% 60% at 100% 0%,rgba(255,90,31,.35),transparent 60%),radial-gradient(70% 60% at 0% 100%,rgba(75,91,220,.45),transparent 60%),linear-gradient(160deg,#0b1230,#141d45);color:#fff;padding:44px 52px;display:flex;flex-direction:column;gap:26px}
+.g-brand::after{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.08) 1px,transparent 1px);background-size:22px 22px;mask-image:linear-gradient(180deg,#000,transparent 85%);pointer-events:none}
+.g-brand>*{position:relative;z-index:1}
+.g-logo{display:flex;align-items:center;gap:12px}
+.g-logo b{font-family:var(--display);font-size:1.3rem;display:block}
+.g-logo span{font-size:.78rem;color:#a9b1d6}
+.g-brand h1{font-size:clamp(1.8rem,3vw,2.6rem);color:#fff;line-height:1.08;margin-top:auto;max-width:18ch}
+.g-brand p{color:#c3cae8;max-width:46ch;margin:0}
+.g-trust{display:grid;grid-template-columns:1fr 1fr;gap:10px;max-width:520px}
+.g-trust div{display:flex;gap:10px;align-items:flex-start;font-size:.82rem;color:#dbe1f7;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:10px 12px}
+.g-trust svg{width:16px;height:16px;flex:none;color:#ff9a3c;margin-top:2px}
+.g-pf{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.g-pf small{font-family:var(--mono);font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:#8e98c2}
+.g-pf .plogo{height:52px;min-width:150px}
+.g-side{display:flex;align-items:center;justify-content:center;padding:32px;overflow-y:auto}
+.g-card{width:min(440px,100%)}
+.g-step{font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ember)}
+.g-card h2{font-size:1.7rem;margin:6px 0 6px}
+.g-card>p{color:var(--muted);margin:0 0 20px}
+.fld{display:flex;flex-direction:column;gap:6px;margin-bottom:14px}
+.fld label{font-size:.82rem;font-weight:600}
+.fld input{border:1px solid #d6dbe8;border-radius:10px;padding:11px 13px;background:#fff;color:var(--ink);font:inherit}
+.fld input:focus{outline:2px solid var(--ember);outline-offset:0;border-color:transparent}
+.g-row{display:flex;justify-content:space-between;align-items:center;font-size:.82rem;color:var(--muted);margin:2px 0 18px}
+.g-row label{display:flex;gap:6px;align-items:center}
+.g-btn{width:100%;border:0;border-radius:11px;padding:12px;font-weight:600;color:#fff;background:linear-gradient(110deg,#0b1230,#1d2a6e);display:flex;justify-content:center;gap:8px;align-items:center}
+.g-btn:hover{background:linear-gradient(110deg,#141d45,#2a3a8e)}
+.g-link{border:0;background:none;color:var(--iris);font-weight:600;padding:0}
+.g-note{margin-top:16px;font-size:.76rem;color:var(--muted);background:#eceffa;border-radius:10px;padding:10px 12px;display:flex;gap:8px}
+.g-note svg{width:15px;height:15px;flex:none;color:var(--iris);margin-top:1px}
+.g-err{color:var(--rose);font-size:.8rem;min-height:1.2em;margin:-6px 0 8px}
+.otp{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin:6px 0 16px}
+.otp input{text-align:center;font-family:var(--display);font-size:1.5rem;font-weight:700;padding:12px 0;border:1px solid #d6dbe8;border-radius:12px;background:#fff;color:var(--ink);width:100%}
+.otp input:focus{outline:2px solid var(--ember);border-color:transparent}
+.g-wide{width:min(980px,100%)}
+.rolegrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:12px}
+.rcard{text-align:left;border:1px solid #dfe3ee;background:#fff;border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:8px;color:var(--ink);transition:.15s;box-shadow:var(--shadow)}
+.rcard:hover,.rcard:focus-visible{border-color:var(--ember);transform:translateY(-2px)}
+.rcard .ri{width:40px;height:40px;border-radius:11px;display:grid;place-items:center;color:#fff}
+.rcard .ri svg{width:19px;height:19px}
+.rcard b{font-family:var(--display);font-size:1.08rem}
+.rcard span{font-size:.82rem;color:var(--muted)}
+.rcard .rs{display:flex;flex-wrap:wrap;gap:4px;margin-top:auto}
+.rcard .rs i{font-style:normal;font-size:.7rem;background:var(--canvas);border:1px solid var(--line);border-radius:6px;padding:1px 6px;color:var(--muted)}
+.rcard .rec{font-family:var(--mono);font-size:.62rem;letter-spacing:.12em;color:var(--ember)}
+.prep{display:grid;gap:10px;margin-top:10px}
+.prep div{display:flex;gap:10px;align-items:center;font-size:.92rem;color:var(--muted)}
+.prep i{width:22px;height:22px;border-radius:50%;border:2px solid #d6dbe8;display:grid;place-items:center;font-style:normal;font-size:.7rem;flex:none}
+.prep div.ok{color:var(--ink)}
+.prep div.ok i{background:var(--mint);border-color:var(--mint);color:#fff}
+.prep div.run i{border-color:var(--ember);border-top-color:transparent;animation:spin .7s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+/* avatar menu + session strip */
+.avatar{cursor:pointer;border:0}
+.umenu{position:fixed;top:62px;right:20px;width:280px;background:var(--surface);border:1px solid var(--line);border-radius:14px;box-shadow:0 24px 60px -24px rgba(13,19,48,.4);z-index:115;display:none;overflow:hidden}
+.umenu.open{display:block}
+.umenu .uh{padding:14px 16px;border-bottom:1px solid var(--line)}
+.umenu .uh b{display:block}
+.umenu .uh small{color:var(--muted);font-size:.78rem}
+.umenu button{display:flex;width:100%;gap:10px;align-items:center;border:0;background:none;padding:10px 16px;color:var(--ink);text-align:left}
+.umenu button:hover{background:var(--canvas)}
+.umenu button svg{width:16px;height:16px;color:var(--muted)}
+.session{display:flex;gap:14px;flex-wrap:wrap;align-items:center;font-size:.74rem;color:var(--muted);margin-top:28px;padding-top:14px;border-top:1px solid var(--line)}
+.session b{color:var(--ink);font-weight:600}
+.session .sd{display:inline-flex;align-items:center;gap:6px}
+.session .sd::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--mint)}
+/* executive brief */
+.exec-h{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;margin-bottom:18px}
+.exec-h .date{font-family:var(--mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.exec-h h1{font-size:2rem;margin-top:4px}
+.exec-h p{margin:6px 0 0;color:var(--muted)}
+.askbar{display:flex;align-items:center;gap:10px;width:100%;border:1px solid var(--line);background:var(--surface);border-radius:14px;padding:12px 14px;color:var(--muted);text-align:left;box-shadow:var(--shadow);margin-bottom:16px}
+.askbar svg{width:20px;height:20px;flex:none}
+.askbar span{flex:1}
+.askbar .chips{flex-wrap:nowrap;overflow:hidden}
+.decision{display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line)}
+.decision:last-child{border-bottom:0}
+.decision .dn{width:34px;height:34px;border-radius:10px;background:var(--amber-bg);color:var(--amber);display:grid;place-items:center;font-family:var(--display);font-weight:700}
+.decision b{display:block;font-size:.92rem}
+.decision span{font-size:.8rem;color:var(--muted)}
+.pains{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:14px}
+.pain{display:flex;flex-direction:column;padding:0;overflow:hidden}
+.pain .ph{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;border-bottom:1px solid var(--line);background:linear-gradient(90deg,var(--rose-bg),transparent)}
+.pain .ph .no{font-family:var(--mono);font-size:.7rem;color:var(--rose);letter-spacing:.1em}
+.pain .src{font-size:.7rem;color:var(--muted);border:1px solid var(--line);border-radius:6px;padding:1px 7px;background:var(--surface)}
+.pain .pb{padding:14px 16px;display:flex;flex-direction:column;gap:10px;flex:1}
+.pain .was{font-size:.86rem}
+.pain .was b{color:var(--rose);font-size:.68rem;letter-spacing:.12em;font-family:var(--mono);display:block;margin-bottom:2px}
+.pain .now{font-size:.86rem;padding:10px 12px;border-radius:10px;background:var(--mint-bg)}
+.pain .now b{color:var(--mint);font-size:.68rem;letter-spacing:.12em;font-family:var(--mono);display:block;margin-bottom:2px}
+.pain .pm{display:flex;justify-content:space-between;align-items:flex-end;gap:10px;margin-top:auto}
+.pain .pm strong{font-family:var(--display);font-size:1.6rem;line-height:1}
+.pain .pm small{display:block;color:var(--muted);font-size:.74rem}
+@media (max-width:900px){.gate{grid-template-columns:1fr}.g-brand{display:none}}
+@media (prefers-reduced-motion: reduce){.prep div.run i{animation:none}}
+.top .search{min-width:230px}@media (max-width:1350px){.presence>span{display:none}.tourbtn{display:none}}
 </style>
 </head>
-<body>
+<body class="locked">
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
     <symbol id="i-home" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></symbol>
@@ -413,21 +513,34 @@ svg text{font-family:var(--body)}
   </defs>
 </svg>
 
+<div class="gate" id="gate" role="dialog" aria-modal="true" aria-label="Sign in to Ecosystem OS">
+  <section class="g-brand" aria-hidden="false">
+    <div class="g-logo"><svg width="44" height="44"><use href="#spark"/></svg><div><b>Ecosystem OS</b><span>Monitoring, verification &amp; impact reporting</span></div></div>
+    <div class="g-pf"><small>Prepared for</small><div class="plogo" id="g-logo-ignite"><img src="https://ignite.org.pk/wp-content/uploads/2024/09/Ignite-Final-Logo-1-1.webp" alt="Ignite – National Technology Fund" onload="this.parentNode.classList.add('has')" onerror="this.remove()"><b>Ignite</b><span>National Technology Fund</span></div><div class="plogo"><b>MoITT</b><span>Ministry of IT &amp; Telecom</span></div></div>
+    <h1>One verified view of Pakistan's innovation network</h1>
+    <p>Every centre, startup, grant and figure, checked against evidence before it is reported to the Board, the Ministry or Parliament.</p>
+    <div class="g-trust">
+      <div><svg><use href="#i-shield"/></svg>Data hosted in Pakistan, owned by Ignite</div>
+      <div><svg><use href="#i-users"/></svg>Role-based access for every team</div>
+      <div><svg><use href="#i-doc"/></svg>Permanent audit trail on every figure</div>
+      <div><svg><use href="#i-check"/></svg>Two-step sign-in for all accounts</div>
+    </div>
+  </section>
+  <section class="g-side"><div id="g-body" class="g-card"></div></section>
+</div>
+
+<div class="umenu" id="umenu" role="menu"></div>
 <div class="app">
   <aside aria-label="Main navigation">
     <div class="brand"><svg width="40" height="40"><use href="#spark"/></svg><div><b>Ecosystem OS</b><span>Monitoring &amp; impact platform</span></div></div>
     <div class="partners"><small>Prepared for</small><div class="plogos"><div class="plogo" id="logo-ignite"><img src="https://ignite.org.pk/wp-content/uploads/2024/09/Ignite-Final-Logo-1-1.webp" alt="Ignite – National Technology Fund" onload="this.parentNode.classList.add('has')" onerror="this.remove()"><b>Ignite</b><span>National Technology Fund</span></div><div class="plogo" id="logo-moitt"><b>MoITT</b><span>Ministry of IT &amp; Telecom</span></div></div></div>
     <nav class="navgroup" id="nav"></nav>
-    <div class="role"><label id="role-l">View as</label>
-      <div class="seg" role="group" aria-labelledby="role-l" id="roles">
-        <button data-role="hq" class="on">Ignite HQ</button><button data-role="nic">NIC</button><button data-role="investor">Investor</button>
-      </div>
-    </div>
+    <div class="role"><label>Workspace</label><b id="wsname" style="display:block;color:#fff;font-family:var(--display);margin-bottom:8px">Monitoring &amp; Evaluation</b><div class="seg" id="roles" style="display:none"></div><button class="btn small" data-uswitch style="width:100%;justify-content:center;background:rgba(255,255,255,.08);color:#fff;border-color:rgba(255,255,255,.15)">Switch workspace</button></div>
     <div class="powered">Built on CEGA OS · by Flowbox</div>
     <div class="disclaim">Independent demo by Flowbox. Not an official Ignite or MoITT system.</div>
   </aside>
   <main>
-    <div class="mnav"><label for="mnav" style="position:absolute;left:-9999px">Go to screen</label><select id="mnav"></select><select id="mrole" aria-label="View as"><option value="hq">Ignite HQ</option><option value="nic">NIC</option><option value="investor">Investor</option></select></div>
+    <div class="mnav"><label for="mnav" style="position:absolute;left:-9999px">Go to screen</label><select id="mnav"></select><select id="mrole" aria-label="Workspace"><option value="ceo">CEO &amp; leadership</option><option value="hq">Monitoring &amp; Evaluation</option><option value="finance">Finance &amp; grants</option><option value="nic">NIC operator</option><option value="auditor">Auditor</option><option value="investor">Investor</option></select></div>
     <div class="top">
       <div class="search"><svg><use href="#i-search"/></svg><input id="q" type="search" placeholder="Search anything" aria-label="Search" autocomplete="off"><kbd>/</kbd><div class="results" id="results" role="listbox"></div></div>
       <div class="spacer"></div>
@@ -435,11 +548,12 @@ svg text{font-family:var(--body)}
       <button class="tourbtn" data-tour="0">Guided tour</button>
       <select class="qsel" aria-label="Reporting quarter"><option>Q1 FY2026-27</option><option>Q4 FY2025-26</option><option>Q3 FY2025-26</option></select>
       <button class="iconbtn" aria-label="Notifications" data-go="overview"><svg><use href="#i-bell"/></svg><i></i></button>
-      <div class="avatar" id="avatar" title="Signed in">MD</div>
+      <div class="avatar" id="avatar" title="Profile" role="button" tabindex="0" aria-label="Profile menu">MD</div>
     </div>
     <div class="content">
       <div class="ribbon"><span class="dot"></span>Demo environment. Centres are real, but every startup and figure shown is sample data.</div>
       <div id="view"></div>
+      <div class="session" id="session"></div>
     </div>
   </main>
 </div>
@@ -763,6 +877,7 @@ function claimCard(c){
   const hq = ROLE==="hq";
   let actions;
   if(c.status==="Verified") actions=`<span class="pill ok">Signed off · ready for reports</span>`;
+  else if(ROLE!=="nic"&&!hq) actions=`<span class="pill info">Awaiting Monitoring review</span>`;
   else if(!hq) actions = c.status==="No evidence" ? `<button class="btn small primary" data-toast="Evidence uploaded for ${esc(c.startup)}">${ic("i-clip")}Upload evidence</button>` : `<span class="pill info">Awaiting Ignite review</span>`;
   else if(c.status==="No evidence") actions=`<button class="btn small" data-request="${c.id}">Request evidence</button>`;
   else actions=`<button class="btn small" data-return="${c.id}">Return to centre</button><button class="btn small primary" data-verify="${c.id}">${ic("i-check")}${c.status==="Mismatch"?"Accept evidenced figure":"Verify"}</button>`;
@@ -891,6 +1006,7 @@ VIEWS.reports = function(){
 
 /* ---------- Guided tour ---------- */
 const TOUR = [
+  {role:"ceo",go:"exec",t:"The CEO's executive brief",p:"Decisions waiting, what changed since last sign-in, and the eight problems Ignite has today, each matched to the feature that fixes it."},
   {role:"hq",go:"journey",t:"The whole journey on one page",p:"Four groups of people, seven stages, one system. Every stage links to the screen where it happens."},
   {role:"hq",go:"overview",t:"Monday morning at Ignite HQ",p:"Data health, verified numbers, a live national map and the alerts that need a decision this week."},
   {role:"hq",go:"centre-qta",t:"Drill into any centre",p:"NIC Quetta is behind. Its agreement KPIs, overdue reports and escalation path are all here. No email chasing."},
@@ -915,7 +1031,7 @@ function tourShow(i){
   el.classList.add("open");
   if(s.ask){setTimeout(()=>openCopilot(s.ask),300);} else closeCopilot();
 }
-function tourEnd(){TOUR_I=-1;$("#tour").classList.remove("open");if(ROLE!=="hq"){ROLE="hq";render();}}
+function tourEnd(){TOUR_I=-1;$("#tour").classList.remove("open");if(ROLE!==USER.role){ROLE=USER.role;render();}}
 
 /* ---------- Copilot / WhatsApp events ---------- */
 document.addEventListener("click", e=>{
@@ -1097,7 +1213,9 @@ function renderNav(active){
   $("#nav").innerHTML = groups.map(g=>`<div style="margin-bottom:14px"><small>${g}</small>${allowed.filter(s=>SCREENS[s].group===g).map(s=>{const S=SCREENS[s];const b=S.badge?S.badge():0;
     return `<a href="#${s}" class="${active===s?"active":""}" ${active===s?'aria-current="page"':""}><svg><use href="#${S.icon}"/></svg>${S.label}${b?`<span class="count">${b}</span>`:""}</a>`;}).join("")}</div>`).join("");
   $("#mnav").innerHTML = allowed.map(s=>`<option value="${s}" ${s===active?"selected":""}>${SCREENS[s].label}</option>`).join("");
-  $("#avatar").textContent=role.who; $("#avatar").title=role.label;
+  $("#avatar").textContent=(typeof USER!=="undefined"&&USER.name)?USER.name.split(/\s+/).map(w=>w[0]).join("").slice(0,2).toUpperCase():role.who; $("#avatar").title=role.label;
+  const wsn=document.getElementById("wsname"); if(wsn) wsn.textContent=role.label;
+  const ss=document.getElementById("session"); if(ss&&typeof USER!=="undefined") ss.innerHTML=`<span class="sd">Secure session</span><span>Signed in as <b>${esc(USER.name||"Demo user")}</b> · ${role.label}</span><span>Two-step verified</span><span>Auto-locks after 30 minutes idle</span><span>Every action is recorded in the audit trail</span>`;
   document.querySelectorAll("#roles button").forEach(b=>b.classList.toggle("on",b.dataset.role===ROLE));
   $("#mrole").value=ROLE;
 }
@@ -1106,7 +1224,7 @@ function render(){
   const role = ROLES[ROLE];
   let screen = hash, param=null;
   if(hash.startsWith("centre-")){screen="centre";param=hash.slice(7);}
-  const ok = screen==="centre" ? ROLE==="hq" : role.screens.includes(screen);
+  const ok = screen==="centre" ? ["hq","ceo","auditor"].includes(ROLE) : role.screens.includes(screen);
   if(!ok){screen=role.home;param=null;}
   $("#view").innerHTML = VIEWS[screen](param);
   renderNav(screen==="centre" ? "centres" : screen);
@@ -1122,7 +1240,7 @@ document.addEventListener("click", e=>{
   if(d.jump){location.hash=d.jump;$("#q").value="";$("#results").classList.remove("open");return;}
   if(d.filter){window._alumniFilter=d.filter;}
   if(d.go){ if(location.hash==="#"+d.go) render(); else location.hash=d.go; }
-  else if(d.centre){ if(ROLE==="hq") location.hash="centre-"+d.centre; }
+  else if(d.centre){ if(["hq","ceo","auditor"].includes(ROLE)) location.hash="centre-"+d.centre; }
   else if(d.filter){render();}
   else if(d.prog){window._grantProg=d.prog;render();}
   else if(d.advance){const g=GRANTS.find(x=>x.name===d.advance);const i=STAGES.indexOf(g.stage);g.stage=STAGES[i+1];if(!g.score&&(g.stage==="Evaluation"||g.stage==="Due diligence"))g.score=74+Math.round(Math.random()*14);render();toast(`${g.name} moved to ${g.stage}`);}
@@ -1132,7 +1250,7 @@ document.addEventListener("click", e=>{
   if(d.toast) toast(d.toast);
 });
 document.addEventListener("keydown", e=>{
-  if(e.key==="Enter"){const r=e.target.closest("[data-centre]"); if(r && ROLE==="hq") location.hash="centre-"+r.dataset.centre;}
+  if(e.key==="Enter"){const r=e.target.closest("[data-centre]"); if(r && ["hq","ceo","auditor"].includes(ROLE)) location.hash="centre-"+r.dataset.centre;}
   if(e.key==="/" && document.activeElement!==$("#q")){e.preventDefault();$("#q").focus();}
   if(e.key==="Escape"){$("#results").classList.remove("open");}
 });
@@ -1141,7 +1259,7 @@ document.addEventListener("keydown", e=>{
 function searchIndex(){
   const role=ROLES[ROLE]; const items=[];
   role.screens.forEach(s=>items.push({t:SCREENS[s].label,k:"Screen",go:s}));
-  if(ROLE==="hq") CENTRES.forEach(c=>items.push({t:c.name,k:c.type,go:"centre-"+c.id}));
+  if(["hq","ceo","auditor"].includes(ROLE)) CENTRES.forEach(c=>items.push({t:c.name,k:c.type,go:"centre-"+c.id}));
   if(role.screens.includes("alumni")) scopedAlumni().forEach(a=>items.push({t:a.name,k:"Alumni · "+a.centre,go:"alumni"}));
   if(role.screens.includes("grants")) GRANTS.forEach(g=>items.push({t:g.name,k:g.prog+" application",go:"grants"}));
   if(role.screens.includes("investors")) STARTUPS_PUBLIC.forEach(s=>items.push({t:s.name,k:"Investor room",go:"investors"}));
@@ -1161,12 +1279,147 @@ $("#mrole").addEventListener("change", e=>setRole(e.target.value));
 window.addEventListener("hashchange", ()=>{render();window.scrollTo(0,0);});
 render();
 
+/* ===== secure entry gate ===== */
+var USER={name:"",email:"",role:"ceo"};
+Object.assign(ROLES,{
+  ceo:{who:"CE",label:"CEO & leadership",screens:["exec","overview","centres","audit","verify","alumni","grants","investors","reports","report","journey"],home:"exec"},
+  finance:{who:"FN",label:"Finance & grants",screens:["grants","investors","reports","report"],home:"grants"},
+  auditor:{who:"AG",label:"Auditor (read-only)",screens:["audit","verify","centres","reports","report"],home:"audit"},
+});
+ROLES.hq.label="Monitoring & Evaluation";
+SCREENS.exec={label:"Executive brief",group:"Leadership",icon:"i-home"};
+const ROLECARDS=[
+  {id:"ceo",t:"CEO & leadership",d:"Executive brief, decisions waiting for you, and the network at a glance.",c:"#ff5a1f",i:"i-home",s:["Executive brief","Audit readiness","Board pack"],rec:true},
+  {id:"hq",t:"Monitoring & Evaluation",d:"Verify figures, chase reports, track every centre against its agreement.",c:"#4b5bdc",i:"i-shield",s:["Data verification","Centres & KPIs","Alumni"]},
+  {id:"finance",t:"Finance & grants",d:"PSF, SPARK and ELEVATE pipeline, milestones and disbursements.",c:"#0fa47a",i:"i-flow",s:["Grant pipeline","Investor room","Reports"]},
+  {id:"nic",t:"NIC operator",d:"Your centre only: submit reports, upload evidence, track your alumni.",c:"#0e7490",i:"i-grid",s:["My centre","Submissions","WhatsApp"]},
+  {id:"auditor",t:"Auditor (AGP)",d:"Read-only access to evidence, the audit trail and compliance status.",c:"#7c3aed",i:"i-doc",s:["Audit readiness","Evidence","Audit trail"]},
+  {id:"investor",t:"Investor",d:"Verified startup profiles from across Ignite's network.",c:"#c026d3",i:"i-handshake",s:["Investor room"]},
+];
+const G=()=>document.getElementById("g-body");
+function firstName(n){const w=(n||"").trim().split(/\s+/).filter(Boolean);if(!w.length)return "there";return /^(muhammad|mohammad|muhammed|mohammed|m\.?|syed|sayed)$/i.test(w[0])&&w[1]?w[1]:w[0];}
+function gateLogin(){
+  G().className="g-card";
+  G().innerHTML=`<span class="g-step">Step 1 of 3 · Sign in</span><h2>Welcome back</h2><p>Sign in with your official account to continue.</p>
+  <form id="g-login" novalidate>
+   <div class="fld"><label for="g-name">Full name</label><input id="g-name" autocomplete="name" placeholder="Your name" value="${esc(USER.name)}"></div>
+   <div class="fld"><label for="g-email">Official email</label><input id="g-email" type="email" autocomplete="email" placeholder="name@ignite.org.pk" value="${esc(USER.email)}"></div>
+   <div class="fld"><label for="g-pass">Password</label><input id="g-pass" type="password" autocomplete="current-password" placeholder="••••••••"></div>
+   <div class="g-err" id="g-err" role="alert"></div>
+   <div class="g-row"><label><input type="checkbox" checked> Keep me signed in on this device</label><button type="button" class="g-link" data-gdemo>Use demo account</button></div>
+   <button class="g-btn" type="submit">Continue →</button>
+  </form>
+  <div class="g-note"><svg><use href="#i-alert"/></svg><span>This is a demonstration. Any details work, and nothing you type is sent or stored.</span></div>`;
+  setTimeout(()=>document.getElementById("g-name").focus(),30);
+}
+function gateOtp(){
+  const e=USER.email||"name@ignite.org.pk";const [u,dom]=e.split("@");const masked=(u||"n")[0]+"•••@"+(dom||"ignite.org.pk");
+  G().innerHTML=`<span class="g-step">Step 2 of 3 · Verify it's you</span><h2>Enter your code</h2><p>We sent a 6-digit code to <b>${esc(masked)}</b> and by SMS to your registered mobile.</p>
+  <form id="g-otp"><div class="otp">${[0,1,2,3,4,5].map(i=>`<input inputmode="numeric" maxlength="1" aria-label="Digit ${i+1}" id="otp${i}">`).join("")}</div>
+   <div class="g-err" id="g-err" role="alert"></div>
+   <button class="g-btn" type="submit">Verify and continue →</button></form>
+  <div class="g-row" style="margin-top:14px"><button type="button" class="g-link" data-gback>← Back</button><button type="button" class="g-link" data-gfill>Fill demo code</button></div>
+  <div class="g-note"><svg><use href="#i-alert"/></svg><span>Demo: any six digits will work.</span></div>`;
+  setTimeout(()=>document.getElementById("otp0").focus(),30);
+}
+function gateRole(){
+  G().className="g-card g-wide";
+  const first=firstName(USER.name);
+  G().innerHTML=`<span class="g-step">Step 3 of 3 · Choose your workspace</span><h2>How would you like to enter, ${esc(first)}?</h2><p>Each workspace shows only what that team needs. You can switch at any time from your profile menu.</p>
+  <div class="rolegrid">${ROLECARDS.map(r=>`<button class="rcard" data-genter="${r.id}">${r.rec?'<span class="rec">RECOMMENDED FOR LEADERSHIP</span>':""}<div class="ri" style="background:${r.c}"><svg><use href="#${r.i}"/></svg></div><b>${r.t}</b><span>${r.d}</span><div class="rs">${r.s.map(x=>`<i>${x}</i>`).join("")}</div></button>`).join("")}</div>`;
+}
+function gatePrep(roleId){
+  G().className="g-card";
+  const steps=["Verifying your access","Loading 11 centres and 2,250+ startups","Checking figures against evidence","Applying your "+ROLES[roleId].label+" workspace"];
+  G().innerHTML=`<span class="g-step">Signing you in</span><h2>Preparing your workspace</h2><div class="prep">${steps.map((s,i)=>`<div id="pr${i}"><i></i>${s}</div>`).join("")}</div>`;
+  const fast=matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let i=0;const tick=()=>{if(i>0){const p=document.getElementById("pr"+(i-1));p.className="ok";p.querySelector("i").textContent="✓";}if(i<steps.length){document.getElementById("pr"+i).className="run";i++;setTimeout(tick,fast?60:420);}else setTimeout(()=>enterApp(roleId),fast?60:300);};tick();
+}
+function enterApp(roleId){
+  USER.role=roleId;ROLE=roleId;window._alumniFilter="All";
+  document.getElementById("gate").hidden=true;document.body.classList.remove("locked");
+  try{sessionStorage.setItem("eos_user",JSON.stringify(USER));}catch(_){}
+  const home=ROLES[roleId].home;if(location.hash==="#"+home)render();else location.hash=home;
+  setTimeout(()=>toast(`Signed in as ${USER.name||"demo user"} · ${ROLES[roleId].label}`),400);
+}
+function lockApp(){document.getElementById("gate").hidden=false;document.body.classList.add("locked");try{sessionStorage.removeItem("eos_user");}catch(_){}gateLogin();}
+function showRolePicker(){document.getElementById("gate").hidden=false;document.body.classList.add("locked");gateRole();}
+document.addEventListener("submit",e=>{
+  if(e.target.id==="g-login"){e.preventDefault();const n=$("#g-name").value.trim(),m=$("#g-email").value.trim(),p=$("#g-pass").value;
+    if(!n||!m||!p){$("#g-err").textContent="Please fill in your name, email and password.";return;}
+    if(!/^\S+@\S+\.\S+$/.test(m)){$("#g-err").textContent="That email doesn't look right.";return;}
+    USER.name=n;USER.email=m;gateOtp();}
+  if(e.target.id==="g-otp"){e.preventDefault();const code=[0,1,2,3,4,5].map(i=>$("#otp"+i).value).join("");if(!/^\d{6}$/.test(code)){$("#g-err").textContent="Enter all six digits.";return;}gateRole();}
+});
+document.addEventListener("input",e=>{const m=e.target.id&&e.target.id.match(/^otp(\d)$/);if(m){e.target.value=e.target.value.replace(/\D/g,"").slice(0,1);if(e.target.value&&+m[1]<5)$("#otp"+(+m[1]+1)).focus();}});
+document.addEventListener("keydown",e=>{const m=e.target.id&&e.target.id.match(/^otp(\d)$/);if(m&&e.key==="Backspace"&&!e.target.value&&+m[1]>0)$("#otp"+(+m[1]-1)).focus();});
+document.addEventListener("paste",e=>{if(e.target.id&&/^otp\d$/.test(e.target.id)){const d=(e.clipboardData.getData("text")||"").replace(/\D/g,"").slice(0,6);if(d.length===6){e.preventDefault();d.split("").forEach((c,i)=>$("#otp"+i).value=c);}}});
+document.addEventListener("click",e=>{
+  if(e.target.closest("[data-gdemo]")){$("#g-name").value="Demo User";$("#g-email").value="demo@ignite.org.pk";$("#g-pass").value="demo-pass";return;}
+  if(e.target.closest("[data-gfill]")){"482915".split("").forEach((c,i)=>$("#otp"+i).value=c);return;}
+  if(e.target.closest("[data-gback]")){gateLogin();return;}
+  const r=e.target.closest("[data-genter]");if(r){gatePrep(r.dataset.genter);return;}
+  const av=e.target.closest("#avatar");const um=$("#umenu");
+  if(av){e.stopPropagation();um.innerHTML=`<div class="uh"><b>${esc(USER.name||"Demo user")}</b><small>${esc(USER.email||"demo@ignite.org.pk")}</small><br><span class="pill info plain" style="margin-top:6px">${ROLES[ROLE].label}</span></div><button data-uswitch><svg><use href="#i-users"/></svg>Switch workspace</button><button data-utour><svg><use href="#i-route"/></svg>Start guided tour</button><button data-ulock><svg><use href="#i-shield"/></svg>Lock screen</button><button data-ulogout><svg><use href="#i-send"/></svg>Sign out</button>`;um.classList.toggle("open");return;}
+  if(!e.target.closest("#umenu"))um&&um.classList.remove("open");
+  if(e.target.closest("[data-uswitch]")){um.classList.remove("open");showRolePicker();}
+  if(e.target.closest("[data-utour]")){um.classList.remove("open");tourShow(0);}
+  if(e.target.closest("[data-ulock]")){um.classList.remove("open");document.getElementById("gate").hidden=false;document.body.classList.add("locked");USER.email=USER.email||"demo@ignite.org.pk";gateLogin();$("#g-pass").focus();}
+  if(e.target.closest("[data-ulogout]")){um.classList.remove("open");USER.name="";USER.email="";lockApp();toast("Signed out");}
+},true);
+
+/* ===== Executive brief (CEO) ===== */
+const PAINS=[
+  {n:"01",src:"AGP performance audit",was:"NIC funding agreements had no KPIs, so performance could not be measured.",now:"Every agreement's KPIs loaded and tracked live, centre by centre.",m:()=>`${CENTRES.length}/${CENTRES.length}`,ml:"centres with live KPI targets",go:"centres",st:"ok"},
+  {n:"02",src:"AGP performance audit",was:"Investment and revenue figures differed across the website, annual report and audit data.",now:"Every figure is checked against evidence and synced everywhere once verified.",m:()=>`${CLAIMS.filter(c=>c.status==="Verified").length}/${CLAIMS.length}`,ml:"figures verified this quarter",go:"verify",st:"warn"},
+  {n:"03",src:"AGP performance audit",was:"Quarterly, financial and annual reports missing or late, with no follow-up.",now:"Deliverable calendar with automatic escalation on day 1, 7 and 14.",m:()=>`${CENTRES.filter(c=>c.reports[0]>=c.reports[1]).length}/${CENTRES.length}`,ml:"centres fully on time",go:"centres",st:"warn"},
+  {n:"04",src:"AGP audit · press coverage",was:"No tracking after graduation, so survival rates are unknown.",now:"Quarterly check-ins on WhatsApp and email, with at-risk alerts.",m:()=>"72%",ml:"of graduates reported back",go:"alumni",st:"ok"},
+  {n:"05",src:"National Assembly · MoITT",was:"Answers to Parliament and the Ministry take weeks to compile and can't be checked.",now:"AI copilot drafts answers from verified data, with sources, in seconds.",m:()=>"2 min",ml:"to produce a verified brief",go:"reports",st:"ok",ask:"Draft a National Assembly answer on NIC impact"},
+  {n:"06",src:"Pakistan Startup Fund progress",was:"New funds (PSF, SPARK, ELEVATE) run on email and spreadsheets.",now:"One pipeline from application to milestone-based disbursement.",m:()=>`${GRANTS.length}`,ml:"applications in one pipeline",go:"grants",st:"ok"},
+  {n:"07",src:"AGP audit recommendation",was:"No investor-linkage portal; graduates said there was no pool of serious investors.",now:"Investor room listing only verified startups.",m:()=>`${STARTUPS_PUBLIC.filter(s=>s.verified).length}`,ml:"verified startups listed",go:"investors",st:"ok"},
+  {n:"08",src:"AGP performance audit",was:"Eight audit recommendations with no single place to track them.",now:"Audit readiness tracks each one, with proof one click away.",m:()=>`${AUDIT.filter(a=>a.st==="Live").length}/8`,ml:"recommendations addressed",go:"audit",st:"ok"},
+];
+const DECISIONS=[
+  {t:"Approve the Q1 Board pack",d:"18 pages, generated from verified data. Monitoring has signed off.",a:"Approve",msg:"Board pack approved and published to Board members"},
+  {t:"NIC Quetta: escalated to you",d:"2 reports 28 days overdue, graduation at 45% of target.",a:"Review",go:"centre-qta"},
+  {t:"SPARK: Urdu Speech Core recommended for funding",d:"Rs 60 m · evaluator score 88/100 · due diligence complete.",a:"Approve",msg:"SPARK grant approved: Urdu Speech Core, Rs 60 m"},
+  {t:"Audit recommendation 8 needs a Board decision",d:"Asset-retrieval and IPR policy for incubated startups.",a:"Add to agenda",msg:"Added to the next Board meeting agenda"},
+];
+VIEWS.exec=function(){
+  const first=firstName(USER.name);
+  const h=new Date().getHours();const greet=h<12?"Good morning":h<17?"Good afternoon":"Good evening";
+  const health=Math.round(CENTRES.reduce((s,c)=>s+c.health,0)/CENTRES.length);
+  return `<div class="exec-h"><div><span class="date">Executive brief · ${new Date().toLocaleDateString("en-GB",{weekday:"long",day:"numeric",month:"long",year:"numeric"})}</span><h1>${greet}, ${esc(first)}</h1><p>Prepared automatically at 8:00 am from verified data. ${DECISIONS.length} decisions need you today.</p></div>
+    <div class="actions"><button class="btn" data-go="audit">Audit readiness</button><button class="btn primary" data-toast="Board pack downloaded (demo)">Download Board pack</button></div></div>
+  <button class="askbar" data-ask-open><svg><use href="#spark"/></svg><span>Ask anything about the network, e.g. "Which centres are behind target?"</span><span class="kb">⌘K</span></button>
+  <div class="grid tiles">
+   ${[["Verified investment",`Rs ${fmt(sum("invest"))} m`,"+11% this quarter",[1520,1810,2160,2460],"#4b5bdc"],["Verified revenue",`Rs ${fmt(sum("revenue"))} m`,"+9% this quarter",[2900,3200,3500,3780],"#0fa47a"],["Jobs (EOBI-backed)",fmt(sum("jobs")),"+6% this quarter",[6200,6500,6800,7010],"#ff5a1f"],["Network data health",`${health}/100`,"up from 71 a year ago",[71,76,80,health],"#c026d3"]].map(([l,v,d,s,c])=>`<div class="card tile"><small>${l}</small><div class="foot"><b>${v}</b>${spark(s,c,64,28)}</div><span class="delta">${d}</span></div>`).join("")}
+  </div>
+  <div class="grid two" style="margin-top:16px">
+   <div class="card panel"><div class="panel-h"><div><span class="eyebrow">Needs your decision</span><h2>Waiting for you</h2></div><span class="pill warn">${DECISIONS.length} open</span></div>
+    ${DECISIONS.map((x,i)=>`<div class="decision"><span class="dn">${i+1}</span><div><b>${x.t}</b><span>${x.d}</span></div>${x.go?`<button class="btn small" data-centre="qta">${x.a}</button>`:`<button class="btn small ${x.a==="Approve"?"primary":""}" data-decide="${i}">${x.a}</button>`}</div>`).join("")}</div>
+   <div class="card panel"><div class="panel-h"><div><span class="eyebrow">Since you last signed in</span><h2>What changed</h2></div></div>
+    <div class="log">${[["+6","figures verified by Monitoring"],["+1","centre onboarded (NIC Sialkot)"],["+214","graduates replied to check-ins"],["−1","overdue report (NIC Faisalabad caught up)"],["+14","investor intro requests"]].map(l=>`<div><time style="font-family:var(--display);font-size:1rem;color:var(--ink)">${l[0]}</time><span>${l[1]}</span></div>`).join("")}</div></div>
+  </div>
+  <div class="panel-h" style="margin:26px 0 12px"><div><span class="kicker">What Ecosystem OS fixes</span><h2 style="font-size:1.35rem">Eight problems Ignite has today, and what they look like now</h2></div><span class="pill ok">Live</span></div>
+  <div class="pains">${PAINS.map(p=>`<div class="card pain"><div class="ph"><span class="no">PROBLEM ${p.n}</span><span class="src">${p.src}</span></div>
+    <div class="pb"><div class="was"><b>TODAY</b>${p.was}</div><div class="now"><b>WITH ECOSYSTEM OS</b>${p.now}</div>
+    <div class="pm"><div><strong>${p.m()}</strong><small>${p.ml}</small></div>${p.ask?`<button class="btn small primary" data-ask="${p.ask}">Try it →</button>`:`<button class="btn small" data-go="${p.go}">See it →</button>`}</div></div></div>`).join("")}</div>`;
+};
+INFO["Executive brief"]=["A one-page brief for leadership, generated every morning from verified data.","All modules; only verified figures.","CEO and leadership","Leadership sees decisions and risks first, without asking anyone to compile a report."];
+
+document.addEventListener("click",e=>{const dc=e.target.closest("[data-decide]");if(dc){const i=+dc.dataset.decide;const x=DECISIONS[i];DECISIONS.splice(i,1);render();toast(x.msg);}});
+try{const su=JSON.parse(sessionStorage.getItem("eos_user")||"null");if(su&&su.name){Object.assign(USER,su);document.getElementById("gate").hidden=true;document.body.classList.remove("locked");ROLE=su.role;render();}else gateLogin();}catch(_){gateLogin();}
+
 window.POLISH={
  presence:["Sara Malik","Usman Tariq","Nadia Rehman"],
  feedSeed:[{who:"Monitoring Dept",what:"verified KisanLink's revenue (Rs 42.3 m)",t:"2 hrs ago"},{who:"NIC Lahore",what:"submitted the Q1 startup progress report",t:"4 hrs ago"},{who:"System",what:"escalated NIC Quetta to the Project Director",t:"today, 11:05"}],
  feed:[{who:"Rasta Logistics",what:"replied to the Q2 check-in on WhatsApp"},{who:"Omar S.",what:"scored Urdu Speech Core 88/100 for SPARK"},{who:"NIC Peshawar",what:"uploaded EOBI evidence for Saaf Pani Tech"},{who:"Lahore Angels",what:"requested an intro to KisanLink"},{who:"NIC Faisalabad",what:"submitted audited statements for FY26"},{who:"HerCraft",what:"uploaded a Daraz payout as revenue evidence"},{who:"CEGA",what:"published its Q1 centre report"}],
  actions:()=>[
-  {t:"Start guided tour",k:"13 steps",icon:"#i-route",run:()=>tourShow(0)},
+  {t:"Executive brief",k:"CEO & leadership",icon:"#i-home",run:()=>setRole("ceo")},
+  {t:"Switch workspace",k:"Profile",icon:"#i-users",run:()=>showRolePicker()},
+  {t:"Sign out",k:"Profile",icon:"#i-shield",run:()=>{USER.name="";USER.email="";lockApp();}},
+  {t:"Start guided tour",k:"14 steps",icon:"#i-route",run:()=>tourShow(0)},
   {t:"Ask Ecosystem OS",k:"AI copilot",icon:"#i-search",run:()=>openCopilot()},
   {t:"Draft a National Assembly answer",k:"AI copilot",icon:"#i-doc",run:()=>openCopilot("Draft a National Assembly answer on NIC impact")},
   {t:"Which centres are behind target?",k:"AI copilot",icon:"#i-alert",run:()=>openCopilot("Which centres are behind target?")},
@@ -1203,7 +1456,7 @@ function burst(){if(reduce)return;cv.width=innerWidth;cv.height=innerHeight;cons
   if(!raf)tick();}
 function tick(){cx.clearRect(0,0,cv.width,cv.height);parts=parts.filter(p=>p.life-->0);parts.forEach(p=>{p.vy+=p.g;p.vx*=.99;p.x+=p.vx;p.y+=p.vy;p.r+=p.vr;cx.save();cx.translate(p.x,p.y);cx.rotate(p.r);cx.globalAlpha=Math.min(1,p.life/40);cx.fillStyle=p.c;cx.fillRect(-p.s/2,-p.s/4,p.s,p.s/2);cx.restore();});raf=parts.length?requestAnimationFrame(tick):0;if(!parts.length)cx.clearRect(0,0,cv.width,cv.height);}
 window.celebrate=burst;
-const WIN=/submitted|published|upgraded|verified|hired|selected list|filed|sent to \d|all done|locked/i;
+const WIN=/approved|submitted|published|upgraded|verified|hired|selected list|filed|sent to \d|all done|locked/i;
 const _toast=window.toast;
 window.toast=function(m){_toast(m);if(WIN.test(m))burst();};
 try{toast=window.toast;}catch(_){}
@@ -1224,7 +1477,7 @@ document.addEventListener("click",e=>{if(!e.target.closest(".feed")&&!(bell&&bel
 drawFeed();
 let fi=0;function nextEvent(){const ev=(P.feed||[])[fi++%((P.feed||[]).length||1)];if(!ev)return;items.unshift({...ev,t:"just now",nw:true});items.slice(1).forEach((x,i)=>{if(x.t==="just now")x.t="1 min ago";});if(items.length>14)items.pop();unread++;drawFeed();
   const t=$p("#toast");t.classList.add("rich");t.innerHTML=`<span class="ta" style="background:${colorOf(ev.who)}">${ini(ev.who)}</span><span><b>${ev.who}</b> ${ev.what}</span>`;t.classList.add("show");clearTimeout(t._h);t._h=setTimeout(()=>{t.classList.remove("show");setTimeout(()=>t.classList.remove("rich"),300);},3600);}
-setTimeout(function loop(){if(!document.hidden&&!$p(".pal-bg.open"))nextEvent();setTimeout(loop,18000+Math.random()*10000);},9000);
+setTimeout(function loop(){if(!document.hidden&&!$p(".pal-bg.open")&&!document.body.classList.contains("locked"))nextEvent();setTimeout(loop,18000+Math.random()*10000);},9000);
 
 /* command palette */
 const bg=document.createElement("div");bg.className="pal-bg";bg.innerHTML=`<div class="pal" role="dialog" aria-label="Command palette"><div class="pal-in"><svg><use href="#i-search"/></svg><input id="pal-q" placeholder="Type a command or search…" aria-label="Command" autocomplete="off"><kbd>esc</kbd></div><div class="pal-list" id="pal-l" role="listbox"></div><div class="pal-foot"><span><span class="kb">↑</span> <span class="kb">↓</span> move</span><span><span class="kb">↵</span> open</span><span><span class="kb">⌘K</span> toggle</span><span><span class="kb">?</span> shortcuts</span></div></div>`;document.body.appendChild(bg);
@@ -1251,6 +1504,7 @@ const q=$p("#q");if(q){q.setAttribute("readonly","");q.placeholder="Search or ru
 const sc=document.createElement("div");sc.className="pal-bg";sc.innerHTML=`<div class="pal" role="dialog" aria-label="Keyboard shortcuts"><div class="pal-in"><b style="font-family:var(--display)">Keyboard shortcuts</b><span style="flex:1"></span><kbd>esc</kbd></div><div class="sc-grid">${[["Open command palette","⌘K or Ctrl K"],["Search","/"],["Previous / next screen","[ and ]"],["Live activity","N"],["This sheet","?"],["Close anything","Esc"]].map(([a,b])=>`<span>${a}</span><span class="kb">${b}</span>`).join("")}</div></div>`;document.body.appendChild(sc);
 sc.addEventListener("click",e=>{if(e.target===sc)sc.classList.remove("open");});
 document.addEventListener("keydown",e=>{
+  if(document.body.classList.contains("locked"))return;
   const typing=/INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName)&&document.activeElement.id!=="pal-q";
   if((e.metaKey||e.ctrlKey)&&e.key.toLowerCase()==="k"){e.preventDefault();bg.classList.contains("open")?closePal():openPal();return;}
   if(e.key==="Escape"){closePal();sc.classList.remove("open");feed.classList.remove("open");return;}
