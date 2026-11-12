@@ -336,6 +336,59 @@ svg text{font-family:var(--body)}
 @keyframes pulse{0%{r:6;opacity:.55}100%{r:20;opacity:0}}
 .pulse{animation:pulse 2.4s ease-out infinite}
 .plogo img,.pl img{display:none}.plogo.has img,.pl.has img{display:block}.plogo.has b,.plogo.has span,.pl.has b,.pl.has span{display:none}.plogo b,.pl b{font:inherit}
+/* ===== polish layer ===== */
+#view.enter{animation:viewIn .38s cubic-bezier(.2,.7,.2,1)}
+@keyframes viewIn{from{transform:translateY(10px)}to{transform:none}}
+.card{--mx:-200px;--my:-200px}
+.card::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:radial-gradient(260px circle at var(--mx) var(--my),rgba(255,140,80,.10),transparent 60%);opacity:0;transition:opacity .2s}
+.card:hover::after{opacity:1}
+.card{position:relative}
+/* palette */
+.pal-bg{position:fixed;inset:0;background:rgba(5,8,24,.55);backdrop-filter:blur(6px);z-index:120;display:none;align-items:flex-start;justify-content:center;padding-top:12vh}
+.pal-bg.open{display:flex}
+.pal{width:min(640px,calc(100vw - 24px));background:#0f1433;color:#eef1ff;border:1px solid rgba(255,255,255,.12);border-radius:18px;box-shadow:0 40px 120px -30px rgba(0,0,0,.8),0 0 0 1px rgba(255,90,31,.15);overflow:hidden;animation:palIn .18s ease-out}
+@keyframes palIn{from{transform:translateY(-8px) scale(.98)}to{transform:none}}
+.pal-in{display:flex;align-items:center;gap:10px;padding:14px 16px;border-bottom:1px solid rgba(255,255,255,.08)}
+.pal-in svg{width:18px;height:18px;color:#8e98c2;flex:none}
+.pal-in input{flex:1;background:none;border:0;outline:none;color:#fff;font:inherit;font-size:1.02rem}
+.pal-in kbd,.kb{font-family:var(--mono);font-size:.68rem;border:1px solid rgba(255,255,255,.18);border-radius:6px;padding:2px 6px;color:#aab3d6;background:rgba(255,255,255,.05)}
+.pal-list{max-height:52vh;overflow-y:auto;padding:6px}
+.pal-group{font-family:var(--mono);font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:#6f79a6;padding:10px 10px 4px}
+.pal-item{display:flex;align-items:center;gap:12px;width:100%;border:0;background:none;color:#eef1ff;text-align:left;padding:9px 10px;border-radius:10px;font:inherit;font-size:.9rem;cursor:pointer}
+.pal-item .pi{width:28px;height:28px;border-radius:8px;display:grid;place-items:center;background:rgba(255,255,255,.06);flex:none}
+.pal-item .pi svg{width:15px;height:15px}
+.pal-item small{margin-left:auto;color:#8e98c2;font-size:.75rem}
+.pal-item.hl{background:linear-gradient(90deg,rgba(255,90,31,.22),rgba(180,75,255,.14))}
+.pal-foot{display:flex;gap:14px;padding:10px 16px;border-top:1px solid rgba(255,255,255,.08);font-size:.74rem;color:#8e98c2;flex-wrap:wrap}
+/* presence */
+.presence{display:flex;align-items:center;gap:8px;font-size:.78rem;color:var(--muted)}
+.presence .stack{display:flex}
+.presence .stack span{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;color:#fff;font-size:.66rem;font-weight:700;border:2px solid var(--canvas);margin-left:-8px;position:relative}
+.presence .stack span:first-child{margin-left:0}
+.presence .stack span::after{content:"";position:absolute;right:-1px;bottom:-1px;width:8px;height:8px;border-radius:50%;background:#2ee59d;border:2px solid var(--canvas)}
+/* feed */
+.iconbtn .bc{position:absolute;top:-5px;right:-5px;min-width:18px;height:18px;border-radius:99px;background:#ff3d8b;color:#fff;font-size:.62rem;font-weight:700;display:grid;place-items:center;padding:0 4px;border:2px solid var(--canvas)}
+.feed{position:fixed;top:64px;right:20px;width:min(380px,calc(100vw - 24px));max-height:70vh;overflow:hidden;display:none;flex-direction:column;background:#0f1433;color:#eef1ff;border:1px solid rgba(255,255,255,.12);border-radius:16px;box-shadow:0 30px 80px -24px rgba(0,0,0,.7);z-index:110}
+.feed.open{display:flex}
+.feed-h{display:flex;justify-content:space-between;align-items:center;padding:14px 16px;border-bottom:1px solid rgba(255,255,255,.08)}
+.feed-h b{font-family:var(--display)}
+.feed-h .live{display:inline-flex;align-items:center;gap:6px;font-size:.72rem;color:#7ff5cf}
+.feed-h .live::before{content:"";width:7px;height:7px;border-radius:50%;background:#2ee59d;box-shadow:0 0 0 0 rgba(46,229,157,.6);animation:livep 1.6s infinite}
+@keyframes livep{to{box-shadow:0 0 0 8px rgba(46,229,157,0)}}
+.feed-l{overflow-y:auto;padding:6px}
+.fe{display:grid;grid-template-columns:32px 1fr;gap:10px;padding:10px;border-radius:10px;font-size:.84rem}
+.fe.new{background:rgba(255,90,31,.10)}
+.fe .fa{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;font-size:.7rem;font-weight:700;color:#fff}
+.fe small{display:block;color:#8e98c2;font-size:.72rem;margin-top:2px}
+/* toast upgrade */
+.toast.rich{display:flex;gap:10px;align-items:center}
+.toast .ta{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-size:.62rem;font-weight:700;color:#fff;flex:none}
+.toast.rich::before{display:none}
+/* shortcuts */
+.sc-grid{display:grid;grid-template-columns:1fr auto;gap:10px 20px;padding:16px;font-size:.88rem}
+#confetti{position:fixed;inset:0;pointer-events:none;z-index:200}
+@media (max-width:860px){.presence{display:none}}
+@media (prefers-reduced-motion: reduce){#view.enter,.pal{animation:none}.feed-h .live::before{animation:none}}
 </style>
 </head>
 <body>
@@ -1107,6 +1160,108 @@ $("#mnav").addEventListener("change", e=>location.hash=e.target.value);
 $("#mrole").addEventListener("change", e=>setRole(e.target.value));
 window.addEventListener("hashchange", ()=>{render();window.scrollTo(0,0);});
 render();
+
+window.POLISH={
+ presence:["Sara Malik","Usman Tariq","Nadia Rehman"],
+ feedSeed:[{who:"Monitoring Dept",what:"verified KisanLink's revenue (Rs 42.3 m)",t:"2 hrs ago"},{who:"NIC Lahore",what:"submitted the Q1 startup progress report",t:"4 hrs ago"},{who:"System",what:"escalated NIC Quetta to the Project Director",t:"today, 11:05"}],
+ feed:[{who:"Rasta Logistics",what:"replied to the Q2 check-in on WhatsApp"},{who:"Omar S.",what:"scored Urdu Speech Core 88/100 for SPARK"},{who:"NIC Peshawar",what:"uploaded EOBI evidence for Saaf Pani Tech"},{who:"Lahore Angels",what:"requested an intro to KisanLink"},{who:"NIC Faisalabad",what:"submitted audited statements for FY26"},{who:"HerCraft",what:"uploaded a Daraz payout as revenue evidence"},{who:"CEGA",what:"published its Q1 centre report"}],
+ actions:()=>[
+  {t:"Start guided tour",k:"13 steps",icon:"#i-route",run:()=>tourShow(0)},
+  {t:"Ask Ecosystem OS",k:"AI copilot",icon:"#i-search",run:()=>openCopilot()},
+  {t:"Draft a National Assembly answer",k:"AI copilot",icon:"#i-doc",run:()=>openCopilot("Draft a National Assembly answer on NIC impact")},
+  {t:"Which centres are behind target?",k:"AI copilot",icon:"#i-alert",run:()=>openCopilot("Which centres are behind target?")},
+  {t:"View as Ignite HQ",k:"Role",icon:"#i-users",run:()=>setRole("hq")},
+  {t:"View as NIC Lahore",k:"Role",icon:"#i-users",run:()=>setRole("nic")},
+  {t:"View as investor",k:"Role",icon:"#i-handshake",run:()=>setRole("investor")},
+  {t:"Generate Board pack",k:"Report",icon:"#i-chart",run:()=>toast("Board pack generated: 18 pages (demo)")},
+ ],
+ entities:()=>searchIndex().filter(i=>i.k!=="Screen"),
+};
+
+/* ===== polish layer (shared) ===== */
+(function(){
+const P=window.POLISH||{};
+const $p=s=>document.querySelector(s);
+const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+const colorOf=n=>["#4b5bdc","#ff5a1f","#0fa47a","#c026d3","#0e7490","#7c3aed","#e0344b","#c27803"][[...n].reduce((s,c)=>s+c.charCodeAt(0),0)%8];
+const ini=n=>n.split(/\s+/).map(w=>w[0]).join("").slice(0,2).toUpperCase();
+
+/* favicon */
+const fav=document.createElement("link");fav.rel="icon";fav.href="data:image/svg+xml,"+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff9a3c"/><stop offset="1" stop-color="#ff5a1f"/></linearGradient></defs><rect width="40" height="40" rx="11" fill="url(#g)"/><path d="M20 8 L22.6 17.4 L32 20 L22.6 22.6 L20 32 L17.4 22.6 L8 20 L17.4 17.4 Z" fill="#fff"/></svg>');document.head.appendChild(fav);
+
+/* view transition */
+const view=$p("#view");
+new MutationObserver(()=>{if(reduce)return;view.classList.remove("enter");void view.offsetWidth;view.classList.add("enter");}).observe(view,{childList:true});
+
+/* cursor glow */
+document.addEventListener("pointermove",e=>{const c=e.target.closest&&e.target.closest(".card");if(!c)return;const r=c.getBoundingClientRect();c.style.setProperty("--mx",(e.clientX-r.left)+"px");c.style.setProperty("--my",(e.clientY-r.top)+"px");},{passive:true});
+
+/* confetti */
+const cv=document.createElement("canvas");cv.id="confetti";document.body.appendChild(cv);const cx=cv.getContext("2d");let parts=[],raf=0;
+function burst(){if(reduce)return;cv.width=innerWidth;cv.height=innerHeight;const cols=["#ff5a1f","#ff3d8b","#b44bff","#36d6ff","#3ee6b0","#ffc35a"];
+  for(let i=0;i<140;i++)parts.push({x:innerWidth/2+(Math.random()-.5)*200,y:innerHeight*.35,vx:(Math.random()-.5)*14,vy:Math.random()*-12-4,g:.35,s:Math.random()*6+4,r:Math.random()*6,vr:(Math.random()-.5)*.3,c:cols[i%cols.length],life:110});
+  if(!raf)tick();}
+function tick(){cx.clearRect(0,0,cv.width,cv.height);parts=parts.filter(p=>p.life-->0);parts.forEach(p=>{p.vy+=p.g;p.vx*=.99;p.x+=p.vx;p.y+=p.vy;p.r+=p.vr;cx.save();cx.translate(p.x,p.y);cx.rotate(p.r);cx.globalAlpha=Math.min(1,p.life/40);cx.fillStyle=p.c;cx.fillRect(-p.s/2,-p.s/4,p.s,p.s/2);cx.restore();});raf=parts.length?requestAnimationFrame(tick):0;if(!parts.length)cx.clearRect(0,0,cv.width,cv.height);}
+window.celebrate=burst;
+const WIN=/submitted|published|upgraded|verified|hired|selected list|filed|sent to \d|all done|locked/i;
+const _toast=window.toast;
+window.toast=function(m){_toast(m);if(WIN.test(m))burst();};
+try{toast=window.toast;}catch(_){}
+
+/* presence */
+const top=$p(".top");const qsel=top&&top.querySelector(".qsel");
+if(top&&P.presence){const d=document.createElement("div");d.className="presence";d.title=P.presence.join(", ")+" are online";d.innerHTML=`<div class="stack">${P.presence.map(n=>`<span style="background:${colorOf(n)}" aria-hidden="true">${ini(n)}</span>`).join("")}</div><span>${P.presence.length} online</span>`;top.insertBefore(d,qsel||null);}
+
+/* live feed */
+const bell=top&&top.querySelector(".iconbtn");
+const feed=document.createElement("div");feed.className="feed";feed.setAttribute("role","dialog");feed.setAttribute("aria-label","Live activity");
+feed.innerHTML=`<div class="feed-h"><b>Live activity</b><span class="live">Live</span></div><div class="feed-l" id="feed-l"></div>`;document.body.appendChild(feed);
+const items=(P.feedSeed||[]).map(e=>({...e,t:e.t||"earlier",nw:false}));let unread=0;
+function drawFeed(){$p("#feed-l").innerHTML=items.map(e=>`<div class="fe ${e.nw?"new":""}"><div class="fa" style="background:${colorOf(e.who)}">${ini(e.who)}</div><div><b>${e.who}</b> ${e.what}<small>${e.t}</small></div></div>`).join("");
+  if(bell){let b=bell.querySelector(".bc");if(unread){if(!b){b=document.createElement("span");b.className="bc";bell.appendChild(b);}b.textContent=unread;const dot=bell.querySelector("i");if(dot)dot.style.display="none";}else if(b)b.remove();}}
+if(bell){bell.removeAttribute("data-go");bell.setAttribute("aria-label","Live activity");bell.addEventListener("click",e=>{e.stopPropagation();feed.classList.toggle("open");if(feed.classList.contains("open")){unread=0;drawFeed();setTimeout(()=>{items.forEach(i=>i.nw=false);},3000);}},true);}
+document.addEventListener("click",e=>{if(!e.target.closest(".feed")&&!(bell&&bell.contains(e.target)))feed.classList.remove("open");});
+drawFeed();
+let fi=0;function nextEvent(){const ev=(P.feed||[])[fi++%((P.feed||[]).length||1)];if(!ev)return;items.unshift({...ev,t:"just now",nw:true});items.slice(1).forEach((x,i)=>{if(x.t==="just now")x.t="1 min ago";});if(items.length>14)items.pop();unread++;drawFeed();
+  const t=$p("#toast");t.classList.add("rich");t.innerHTML=`<span class="ta" style="background:${colorOf(ev.who)}">${ini(ev.who)}</span><span><b>${ev.who}</b> ${ev.what}</span>`;t.classList.add("show");clearTimeout(t._h);t._h=setTimeout(()=>{t.classList.remove("show");setTimeout(()=>t.classList.remove("rich"),300);},3600);}
+setTimeout(function loop(){if(!document.hidden&&!$p(".pal-bg.open"))nextEvent();setTimeout(loop,18000+Math.random()*10000);},9000);
+
+/* command palette */
+const bg=document.createElement("div");bg.className="pal-bg";bg.innerHTML=`<div class="pal" role="dialog" aria-label="Command palette"><div class="pal-in"><svg><use href="#i-search"/></svg><input id="pal-q" placeholder="Type a command or search…" aria-label="Command" autocomplete="off"><kbd>esc</kbd></div><div class="pal-list" id="pal-l" role="listbox"></div><div class="pal-foot"><span><span class="kb">↑</span> <span class="kb">↓</span> move</span><span><span class="kb">↵</span> open</span><span><span class="kb">⌘K</span> toggle</span><span><span class="kb">?</span> shortcuts</span></div></div>`;document.body.appendChild(bg);
+let hl=0,flat=[];
+function cmds(){const nav=[...document.querySelectorAll("#nav a")].map(a=>({g:"Go to",t:a.textContent.replace(/\d+$/,"").trim(),icon:(a.querySelector("use")||{}).getAttribute?a.querySelector("use").getAttribute("href"):"#i-grid",run:()=>{location.hash=a.getAttribute("href").slice(1);}}));
+  const acts=(P.actions?P.actions():[]).map(x=>({g:"Actions",icon:x.icon||"#i-flow",...x}));
+  const ents=(P.entities?P.entities():[]).map(x=>({g:"Search",icon:"#i-search",t:x.t,k:x.k,run:()=>{location.hash=x.go;}}));
+  return [...acts,...nav,...ents];}
+function drawPal(){const q=$p("#pal-q").value.trim().toLowerCase();const all=cmds();
+  flat=q?all.filter(c=>(c.t+" "+(c.k||"")).toLowerCase().includes(q)).slice(0,30):all.filter(c=>c.g!=="Search");
+  hl=Math.min(hl,Math.max(0,flat.length-1));let g="";
+  $p("#pal-l").innerHTML=flat.length?flat.map((c,i)=>{const head=c.g!==g?`<div class="pal-group">${(g=c.g)}</div>`:"";return head+`<button class="pal-item ${i===hl?"hl":""}" data-pi="${i}" role="option"><span class="pi"><svg><use href="${c.icon}"/></svg></span>${c.t}${c.k?`<small>${c.k}</small>`:""}</button>`;}).join(""):`<div style="padding:18px;color:#8e98c2;font-size:.88rem">No results for "${q.replace(/</g,"&lt;")}"</div>`;
+  const el=$p(".pal-item.hl");if(el)el.scrollIntoView({block:"nearest"});}
+function openPal(){bg.classList.add("open");$p("#pal-q").value="";hl=0;drawPal();setTimeout(()=>$p("#pal-q").focus(),10);}
+function closePal(){bg.classList.remove("open");}
+window.openPalette=openPal;
+function runPal(i){const c=flat[i];if(!c)return;closePal();setTimeout(()=>c.run(),30);}
+$p("#pal-q").addEventListener("input",()=>{hl=0;drawPal();});
+$p("#pal-q").addEventListener("keydown",e=>{if(e.key==="ArrowDown"){e.preventDefault();hl=Math.min(flat.length-1,hl+1);drawPal();}else if(e.key==="ArrowUp"){e.preventDefault();hl=Math.max(0,hl-1);drawPal();}else if(e.key==="Enter"){e.preventDefault();runPal(hl);}});
+bg.addEventListener("click",e=>{const b=e.target.closest("[data-pi]");if(b){runPal(+b.dataset.pi);return;}if(e.target===bg)closePal();});
+const q=$p("#q");if(q){q.setAttribute("readonly","");q.placeholder="Search or run a command…";const kbd=q.parentNode.querySelector("kbd");if(kbd)kbd.textContent="⌘K";q.addEventListener("focus",e=>{q.blur();openPal();});q.addEventListener("click",openPal);}
+
+/* shortcuts sheet */
+const sc=document.createElement("div");sc.className="pal-bg";sc.innerHTML=`<div class="pal" role="dialog" aria-label="Keyboard shortcuts"><div class="pal-in"><b style="font-family:var(--display)">Keyboard shortcuts</b><span style="flex:1"></span><kbd>esc</kbd></div><div class="sc-grid">${[["Open command palette","⌘K or Ctrl K"],["Search","/"],["Previous / next screen","[ and ]"],["Live activity","N"],["This sheet","?"],["Close anything","Esc"]].map(([a,b])=>`<span>${a}</span><span class="kb">${b}</span>`).join("")}</div></div>`;document.body.appendChild(sc);
+sc.addEventListener("click",e=>{if(e.target===sc)sc.classList.remove("open");});
+document.addEventListener("keydown",e=>{
+  const typing=/INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName)&&document.activeElement.id!=="pal-q";
+  if((e.metaKey||e.ctrlKey)&&e.key.toLowerCase()==="k"){e.preventDefault();bg.classList.contains("open")?closePal():openPal();return;}
+  if(e.key==="Escape"){closePal();sc.classList.remove("open");feed.classList.remove("open");return;}
+  if(typing||bg.classList.contains("open"))return;
+  if(e.key==="/"){e.preventDefault();e.stopImmediatePropagation();openPal();}
+  else if(e.key==="?"){sc.classList.add("open");}
+  else if(e.key==="n"||e.key==="N"){if(bell)bell.click();}
+  else if(e.key==="["||e.key==="]"){const links=[...document.querySelectorAll("#nav a")];const i=links.findIndex(a=>a.classList.contains("active"));const n=links[(i+(e.key==="]"?1:-1)+links.length)%links.length];if(n)location.hash=n.getAttribute("href").slice(1);}
+},true);
+})();
+
 </script>
 </body>
 </html>
