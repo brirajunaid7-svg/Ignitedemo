@@ -501,6 +501,15 @@ tr.click:hover td{background:rgba(255,255,255,.04)}
 .pod small{color:var(--muted)}
 @media (prefers-reduced-motion: reduce){.hero::after,.hero::before,.flowline,.halo{animation:none}.tilt:hover{transform:none}}
 
+/* prepared-for lockup */
+.partners{padding:12px;border-radius:14px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08)}
+.partners small{display:block;font-family:var(--mono);font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:#8e98c2;margin-bottom:8px}
+.plogos{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.plogo{height:58px;border-radius:10px;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:6px;text-align:center;color:#0b1230;font-family:var(--display);font-weight:800;font-size:.95rem;line-height:1.05;box-shadow:0 6px 18px -10px rgba(0,0,0,.6)}
+.plogo span{display:block;font-family:var(--body);font-weight:500;font-size:.56rem;color:#5b6478;margin-top:3px}
+.plogo img{max-width:100%;max-height:46px;object-fit:contain}
+.disclaim{font-size:.68rem;color:#6f79a6;padding:0 6px;line-height:1.4}
+
 </style>
 </head>
 <body>
@@ -527,12 +536,14 @@ tr.click:hover td{background:rgba(255,255,255,.04)}
 <div class="app">
   <aside aria-label="Main navigation">
     <div class="brand"><svg width="40" height="40"><use href="#spark"/></svg><div><b>Ecosystem OS</b><span>CEGA · Incubation &amp; Talent Hub</span></div></div>
+    <div class="partners"><small>Prepared for</small><div class="plogos"><div class="plogo" id="logo-ignite">Ignite<span>National Technology Fund</span></div><div class="plogo" id="logo-moitt">MoITT<span>Ministry of IT &amp; Telecom</span></div></div></div>
     <nav class="navgroup" id="nav"></nav>
     <div class="role"><label id="role-l">View as</label>
       <div class="seg" role="group" aria-labelledby="role-l" id="roles" style="grid-template-columns:1fr 1fr"><button data-role="team" class="on">Programme team</button><button data-role="judge">Judge</button></div>
       <select id="jsel" aria-label="Which judge" style="display:none;width:100%;margin-top:8px;border-radius:8px;padding:6px;background:rgba(0,0,0,.3);color:#fff;border:1px solid rgba(255,255,255,.15)"></select>
     </div>
     <div class="powered">Built on CEGA OS · by Flowbox</div>
+    <div class="disclaim">Independent demo by Flowbox. Not an official Ignite or MoITT system.</div>
   </aside>
   <main>
     <div class="mnav"><label for="mnav" style="position:absolute;left:-9999px">Go to screen</label><select id="mnav"></select><select id="mrole" aria-label="View as"><option value="team">Programme team</option><option value="judge">Judge</option></select></div>

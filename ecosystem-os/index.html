@@ -324,6 +324,15 @@ svg text{font-family:var(--body)}
 @media (max-width:1000px){.wa-grid{grid-template-columns:1fr!important}}
 @media (prefers-reduced-motion: reduce){.copilot{transition:none}.typing i{animation:none}}
 
+/* prepared-for lockup */
+.partners{padding:12px;border-radius:14px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08)}
+.partners small{display:block;font-family:var(--mono);font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:#8e98c2;margin-bottom:8px}
+.plogos{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.plogo{height:58px;border-radius:10px;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:6px;text-align:center;color:#0b1230;font-family:var(--display);font-weight:800;font-size:.95rem;line-height:1.05;box-shadow:0 6px 18px -10px rgba(0,0,0,.6)}
+.plogo span{display:block;font-family:var(--body);font-weight:500;font-size:.56rem;color:#5b6478;margin-top:3px}
+.plogo img{max-width:100%;max-height:46px;object-fit:contain}
+.disclaim{font-size:.68rem;color:#6f79a6;padding:0 6px;line-height:1.4}
+
 @keyframes pulse{0%{r:6;opacity:.55}100%{r:20;opacity:0}}
 .pulse{animation:pulse 2.4s ease-out infinite}
 </style>
@@ -352,7 +361,8 @@ svg text{font-family:var(--body)}
 
 <div class="app">
   <aside aria-label="Main navigation">
-    <div class="brand"><svg width="40" height="40"><use href="#spark"/></svg><div><b>Ecosystem OS</b><span>for Ignite · National Technology Fund</span></div></div>
+    <div class="brand"><svg width="40" height="40"><use href="#spark"/></svg><div><b>Ecosystem OS</b><span>Monitoring &amp; impact platform</span></div></div>
+    <div class="partners"><small>Prepared for</small><div class="plogos"><div class="plogo" id="logo-ignite">Ignite<span>National Technology Fund</span></div><div class="plogo" id="logo-moitt">MoITT<span>Ministry of IT &amp; Telecom</span></div></div></div>
     <nav class="navgroup" id="nav"></nav>
     <div class="role"><label id="role-l">View as</label>
       <div class="seg" role="group" aria-labelledby="role-l" id="roles">
@@ -360,6 +370,7 @@ svg text{font-family:var(--body)}
       </div>
     </div>
     <div class="powered">Built on CEGA OS · by Flowbox</div>
+    <div class="disclaim">Independent demo by Flowbox. Not an official Ignite or MoITT system.</div>
   </aside>
   <main>
     <div class="mnav"><label for="mnav" style="position:absolute;left:-9999px">Go to screen</label><select id="mnav"></select><select id="mrole" aria-label="View as"><option value="hq">Ignite HQ</option><option value="nic">NIC</option><option value="investor">Investor</option></select></div>
