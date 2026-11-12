@@ -489,6 +489,7 @@ body.locked{overflow:hidden}
 @media (max-width:900px){.gate{grid-template-columns:1fr}.g-brand{display:none}}
 @media (prefers-reduced-motion: reduce){.prep div.run i{animation:none}}
 .top .search{min-width:230px}@media (max-width:1350px){.presence>span{display:none}.tourbtn{display:none}}
+.nn{font-family:var(--mono);font-size:.66rem;color:#6f79a6;width:18px;flex:none}.navgroup a.active .nn{color:#ff9a3c}
 </style>
 </head>
 <body class="locked">
@@ -642,13 +643,13 @@ const JOURNEYS = [
 
 /* ---------- Roles ---------- */
 const ROLES = {
-  hq:{who:"MD", label:"Monitoring Department · Ignite HQ", screens:["journey","overview","centres","audit","verify","alumni","grants","investors","comms","whatsapp","reports","report"], home:"overview"},
+  hq:{who:"MD", label:"Monitoring Department · Ignite HQ", screens:["overview","centres","verify","audit","alumni","grants","investors","comms","whatsapp","reports","report","journey"], home:"overview"},
   nic:{who:"NL", label:"NIC Lahore · Centre manager", centre:"lhr", screens:["mycentre","verify","alumni","whatsapp"], home:"mycentre"},
   investor:{who:"IV", label:"Registered investor", screens:["investors"], home:"investors"},
 };
 let ROLE = "hq";
 const SCREENS = {
-  journey:{label:"User journey", group:"Start here", icon:"i-route"},
+  journey:{label:"User journey", group:"Guide", icon:"i-route"},
   overview:{label:"Overview", group:"Monitor", icon:"i-home"},
   centres:{label:"Centres & KPIs", group:"Monitor", icon:"i-grid"},
   mycentre:{label:"My centre", group:"Monitor", icon:"i-grid"},
@@ -1209,10 +1210,10 @@ function closeCopilot(){ $("#copilot").classList.remove("open"); }
 /* ---------- Router & shell ---------- */
 function renderNav(active){
   const role=ROLES[ROLE]; const allowed=role.screens;
-  const groups=[...new Set(allowed.map(s=>SCREENS[s].group))];
+  const groups=[...new Set(allowed.map(s=>SCREENS[s].group))];let n=0;
   $("#nav").innerHTML = groups.map(g=>`<div style="margin-bottom:14px"><small>${g}</small>${allowed.filter(s=>SCREENS[s].group===g).map(s=>{const S=SCREENS[s];const b=S.badge?S.badge():0;
-    return `<a href="#${s}" class="${active===s?"active":""}" ${active===s?'aria-current="page"':""}><svg><use href="#${S.icon}"/></svg>${S.label}${b?`<span class="count">${b}</span>`:""}</a>`;}).join("")}</div>`).join("");
-  $("#mnav").innerHTML = allowed.map(s=>`<option value="${s}" ${s===active?"selected":""}>${SCREENS[s].label}</option>`).join("");
+    n++;return `<a href="#${s}" data-label="${S.label}" class="${active===s?"active":""}" ${active===s?'aria-current="page"':""}><span class="nn">${String(n).padStart(2,"0")}</span><svg><use href="#${S.icon}"/></svg>${S.label}${b?`<span class="count">${b}</span>`:""}</a>`;}).join("")}</div>`).join("");
+  $("#mnav").innerHTML = allowed.map((s,i)=>`<option value="${s}" ${s===active?"selected":""}>${String(i+1).padStart(2,"0")} · ${SCREENS[s].label}</option>`).join("");
   $("#avatar").textContent=(typeof USER!=="undefined"&&USER.name)?USER.name.split(/\s+/).map(w=>w[0]).join("").slice(0,2).toUpperCase():role.who; $("#avatar").title=role.label;
   const wsn=document.getElementById("wsname"); if(wsn) wsn.textContent=role.label;
   const ss=document.getElementById("session"); if(ss&&typeof USER!=="undefined") ss.innerHTML=`<span class="sd">Secure session</span><span>Signed in as <b>${esc(USER.name||"Demo user")}</b> · ${role.label}</span><span>Two-step verified</span><span>Auto-locks after 30 minutes idle</span><span>Every action is recorded in the audit trail</span>`;
@@ -1282,9 +1283,9 @@ render();
 /* ===== secure entry gate ===== */
 var USER={name:"",email:"",role:"ceo"};
 Object.assign(ROLES,{
-  ceo:{who:"CE",label:"CEO & leadership",screens:["exec","overview","centres","audit","verify","alumni","grants","investors","reports","report","journey"],home:"exec"},
+  ceo:{who:"CE",label:"CEO & leadership",screens:["exec","overview","centres","verify","audit","alumni","grants","investors","reports","report","journey"],home:"exec"},
   finance:{who:"FN",label:"Finance & grants",screens:["grants","investors","reports","report"],home:"grants"},
-  auditor:{who:"AG",label:"Auditor (read-only)",screens:["audit","verify","centres","reports","report"],home:"audit"},
+  auditor:{who:"AG",label:"Auditor (read-only)",screens:["centres","verify","audit","reports","report"],home:"audit"},
 });
 ROLES.hq.label="Monitoring & Evaluation";
 SCREENS.exec={label:"Executive brief",group:"Leadership",icon:"i-home"};
@@ -1482,7 +1483,7 @@ setTimeout(function loop(){if(!document.hidden&&!$p(".pal-bg.open")&&!document.b
 /* command palette */
 const bg=document.createElement("div");bg.className="pal-bg";bg.innerHTML=`<div class="pal" role="dialog" aria-label="Command palette"><div class="pal-in"><svg><use href="#i-search"/></svg><input id="pal-q" placeholder="Type a command or search…" aria-label="Command" autocomplete="off"><kbd>esc</kbd></div><div class="pal-list" id="pal-l" role="listbox"></div><div class="pal-foot"><span><span class="kb">↑</span> <span class="kb">↓</span> move</span><span><span class="kb">↵</span> open</span><span><span class="kb">⌘K</span> toggle</span><span><span class="kb">?</span> shortcuts</span></div></div>`;document.body.appendChild(bg);
 let hl=0,flat=[];
-function cmds(){const nav=[...document.querySelectorAll("#nav a")].map(a=>({g:"Go to",t:a.textContent.replace(/\d+$/,"").trim(),icon:(a.querySelector("use")||{}).getAttribute?a.querySelector("use").getAttribute("href"):"#i-grid",run:()=>{location.hash=a.getAttribute("href").slice(1);}}));
+function cmds(){const nav=[...document.querySelectorAll("#nav a")].map(a=>({g:"Go to",t:(a.dataset.label||a.textContent.replace(/\d+$/,"")).trim(),icon:(a.querySelector("use")||{}).getAttribute?a.querySelector("use").getAttribute("href"):"#i-grid",run:()=>{location.hash=a.getAttribute("href").slice(1);}}));
   const acts=(P.actions?P.actions():[]).map(x=>({g:"Actions",icon:x.icon||"#i-flow",...x}));
   const ents=(P.entities?P.entities():[]).map(x=>({g:"Search",icon:"#i-search",t:x.t,k:x.k,run:()=>{location.hash=x.go;}}));
   return [...acts,...nav,...ents];}
