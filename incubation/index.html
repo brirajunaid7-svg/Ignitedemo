@@ -1683,7 +1683,7 @@ window.SUITE_APP="inc";
 /* ===== suite: one sign-in, one switcher, one task list ===== */
 (function(){
 const APP=window.SUITE_APP;
-const onGh=/github\.io$/.test(location.hostname)||location.protocol==="file:";
+const onGh=/\/(ecosystem-os|incubation|reporting)(\/|\/index\.html)?$/.test(location.pathname)||location.protocol==="file:";
 const ART={eco:"https://claude.ai/artifact/Sc4Reb154t9B65nQU1H577",inc:"https://claude.ai/artifact/Tmq7rjouEXh5Q2s2n4LyGR",rep:"https://claude.ai/artifact/Vtk3L4Bcaro4RroXV3Noxc"};
 const PATH={eco:"ecosystem-os",inc:"incubation",rep:"reporting"};
 const url=(a,h)=>(onGh?`../${PATH[a]}/`:ART[a])+(h?"#"+h:"");
