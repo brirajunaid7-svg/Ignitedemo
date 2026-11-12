@@ -335,6 +335,7 @@ svg text{font-family:var(--body)}
 
 @keyframes pulse{0%{r:6;opacity:.55}100%{r:20;opacity:0}}
 .pulse{animation:pulse 2.4s ease-out infinite}
+.plogo img,.pl img{display:none}.plogo.has img,.pl.has img{display:block}.plogo.has b,.plogo.has span,.pl.has b,.pl.has span{display:none}.plogo b,.pl b{font:inherit}
 </style>
 </head>
 <body>
@@ -362,7 +363,7 @@ svg text{font-family:var(--body)}
 <div class="app">
   <aside aria-label="Main navigation">
     <div class="brand"><svg width="40" height="40"><use href="#spark"/></svg><div><b>Ecosystem OS</b><span>Monitoring &amp; impact platform</span></div></div>
-    <div class="partners"><small>Prepared for</small><div class="plogos"><div class="plogo" id="logo-ignite">Ignite<span>National Technology Fund</span></div><div class="plogo" id="logo-moitt">MoITT<span>Ministry of IT &amp; Telecom</span></div></div></div>
+    <div class="partners"><small>Prepared for</small><div class="plogos"><div class="plogo" id="logo-ignite"><img src="https://ignite.org.pk/wp-content/uploads/2024/09/Ignite-Final-Logo-1-1.webp" alt="Ignite – National Technology Fund" onload="this.parentNode.classList.add('has')" onerror="this.remove()"><b>Ignite</b><span>National Technology Fund</span></div><div class="plogo" id="logo-moitt"><b>MoITT</b><span>Ministry of IT &amp; Telecom</span></div></div></div>
     <nav class="navgroup" id="nav"></nav>
     <div class="role"><label id="role-l">View as</label>
       <div class="seg" role="group" aria-labelledby="role-l" id="roles">

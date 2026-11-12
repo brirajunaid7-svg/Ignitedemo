@@ -26,6 +26,7 @@ a.card span{color:var(--muted);font-size:.92rem;line-height:1.5}
 a.card em{font-style:normal;color:#ff9a3c;font-weight:600;margin-top:auto}
 .pf{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin:0 0 30px}.pf small{font-family:"Geist Mono",monospace;font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}.pl{height:64px;min-width:170px;border-radius:12px;background:#fff;color:#0b1230;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8px 16px;font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:1.05rem;line-height:1.05}.pl span{font-family:"Geist",sans-serif;font-weight:500;font-size:.62rem;color:#5b6478;margin-top:3px}.pl img{max-height:50px;max-width:180px;object-fit:contain}
 footer{margin-top:40px;color:#6f79a6;font-size:.8rem}
+.plogo img,.pl img{display:none}.plogo.has img,.pl.has img{display:block}.plogo.has b,.plogo.has span,.pl.has b,.pl.has span{display:none}.plogo b,.pl b{font:inherit}
 </style>
 </head>
 <body>
@@ -34,7 +35,7 @@ footer{margin-top:40px;color:#6f79a6;font-size:.8rem}
   <span class="k">Interactive demos · sample data</span>
   <h1>One operating system for Pakistan's innovation network</h1>
   <p class="lede">Monitoring, verification and reporting for Ignite, plus a full incubation and talent hub for CEGA. Built on CEGA OS by Flowbox.</p>
-  <div class="pf"><small>Prepared for</small><div class="pl" id="logo-ignite">Ignite<span>National Technology Fund</span></div><div class="pl" id="logo-moitt">MoITT<span>Ministry of IT &amp; Telecom</span></div></div>
+  <div class="pf"><small>Prepared for</small><div class="pl" id="logo-ignite"><img src="https://ignite.org.pk/wp-content/uploads/2024/09/Ignite-Final-Logo-1-1.webp" alt="Ignite – National Technology Fund" onload="this.parentNode.classList.add('has')" onerror="this.remove()"><b>Ignite</b><span>National Technology Fund</span></div><div class="pl" id="logo-moitt"><b>MoITT</b><span>Ministry of IT &amp; Telecom</span></div></div>
   <div class="cards">
     <a class="card" href="./ecosystem-os/"><span class="k">For Ignite HQ</span><h2>Ecosystem OS</h2><span>Network monitoring, data verification, audit readiness, alumni tracking, grants, investor room, WhatsApp reporting and an AI copilot.</span><em>Open demo →</em></a>
     <a class="card" href="./incubation/"><span class="k">For CEGA</span><h2>Incubation &amp; Talent Hub</h2><span>The 18-step incubation lifecycle with LCE and jury selection logic, campaigns, onboarding, trainees, skills mapping, studios and the job portal.</span><em>Open demo →</em></a>

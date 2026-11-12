@@ -510,6 +510,7 @@ tr.click:hover td{background:rgba(255,255,255,.04)}
 .plogo img{max-width:100%;max-height:46px;object-fit:contain}
 .disclaim{font-size:.68rem;color:#6f79a6;padding:0 6px;line-height:1.4}
 
+.plogo img,.pl img{display:none}.plogo.has img,.pl.has img{display:block}.plogo.has b,.plogo.has span,.pl.has b,.pl.has span{display:none}.plogo b,.pl b{font:inherit}
 </style>
 </head>
 <body>
@@ -536,7 +537,7 @@ tr.click:hover td{background:rgba(255,255,255,.04)}
 <div class="app">
   <aside aria-label="Main navigation">
     <div class="brand"><svg width="40" height="40"><use href="#spark"/></svg><div><b>Ecosystem OS</b><span>CEGA · Incubation &amp; Talent Hub</span></div></div>
-    <div class="partners"><small>Prepared for</small><div class="plogos"><div class="plogo" id="logo-ignite">Ignite<span>National Technology Fund</span></div><div class="plogo" id="logo-moitt">MoITT<span>Ministry of IT &amp; Telecom</span></div></div></div>
+    <div class="partners"><small>Prepared for</small><div class="plogos"><div class="plogo" id="logo-ignite"><img src="https://ignite.org.pk/wp-content/uploads/2024/09/Ignite-Final-Logo-1-1.webp" alt="Ignite – National Technology Fund" onload="this.parentNode.classList.add('has')" onerror="this.remove()"><b>Ignite</b><span>National Technology Fund</span></div><div class="plogo" id="logo-moitt"><b>MoITT</b><span>Ministry of IT &amp; Telecom</span></div></div></div>
     <nav class="navgroup" id="nav"></nav>
     <div class="role"><label id="role-l">View as</label>
       <div class="seg" role="group" aria-labelledby="role-l" id="roles" style="grid-template-columns:1fr 1fr"><button data-role="team" class="on">Programme team</button><button data-role="judge">Judge</button></div>
